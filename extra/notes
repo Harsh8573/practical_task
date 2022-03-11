@@ -1,0 +1,52 @@
+DropDown LIst:
+
+bool valuefirst = false;
+bool valuesecond = false;
+
+Scaffold(
+      body: Container(
+        child: Column(
+          children: [
+            Row(
+              children: [
+
+                Checkbox(value: this.valuefirst, onChanged: (bool? value)
+                {
+                  setState(() {
+                    this.valuefirst = value!;
+                  });
+                }
+                ),Text('Harsh'),
+
+              ],
+            ),
+            Row(
+              children: [
+
+                Checkbox(value: this.valuefirst, onChanged: (bool? value)
+                {
+                  setState(() {
+                    this.valuefirst = value!;
+                  });
+                }
+                ),Text('Maitri'),
+
+              ],
+            )
+
+          ],
+        ),
+
+
+
+CONTAINER :
+
+                        Container(height:50,color: Colors.amber,),
+                        Container(height:50,color: Colors.amber,),
+                        Container(height:50,color: Colors.amber,),
+                        Container(height:50,color: Colors.amber,),
+                        Container(height:50,color: Colors.amber,),
+                        Container(height:50,color: Colors.lightBlue,),
+                        Container(height:50,color: Colors.lightBlue,),
+                        Container(height:50,color: Colors.black45,),
+
