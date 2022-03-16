@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:practical_harsh/practice.dart';
 
-import 'login.dart';
 
-void main(){
+import 'image_picker.dart';
+
+void main() {
   // ignore: prefer_const_constructors
   runApp(MyApp());
 }
@@ -15,8 +17,8 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-     // ignore: prefer_const_constructors
-     home: Login(),
+      // ignore: prefer_const_constructors
+      home: practice(),
     );
   }
 }

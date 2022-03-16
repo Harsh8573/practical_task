@@ -50,3 +50,407 @@ CONTAINER :
                         Container(height:50,color: Colors.lightBlue,),
                         Container(height:50,color: Colors.black45,),
 
+PagView:
+             import 'package:flutter/material.dart';
+
+             class pageview extends StatefulWidget {
+               @override
+               State<pageview> createState() => _pageviewState();
+             }
+
+             class _pageviewState extends State<pageview> {
+               @override
+               Widget build(BuildContext context) {
+                 return Container();
+               }
+             }
+
+             class PageView extends StatefulWidget {
+               const PageView(
+                   {Key? key,
+                   required PageController controller,
+                   required List<dynamic> children})
+                   : super(key: key);
+
+               @override
+               State<PageView> createState() => _PageViewState();
+             }
+
+             class _PageViewState extends State<PageView> {
+               final PageController _controller = PageController(initialPage: 0);
+
+               @override
+               void dispose() {
+                 _controller.dispose();
+                 super.dispose();
+               }
+
+               @override
+               Widget build(BuildContext context) {
+                 return PageView(
+                   controller: _controller,
+                   children: [
+                     Container(
+                       color: Colors.blue,
+                     ),
+                     Container(
+                       color: Colors.green,
+                     ),
+                     Container(
+                       color: Colors.orange,
+                     )
+                   ],
+                 );
+               }
+             }
+
+Drawer:
+
+ Drawer(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(bottom: 40),
+                child: Image.asset("image/flutter.png"),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Container(
+                  color: Colors.cyan[10],
+                  child: Column(
+                    children: [
+                      // TextButton(
+                      //     onPressed: () {
+                      //       Navigator.of(context).push(MaterialPageRoute(
+                      //           builder: (context) => list()));
+                      //     },
+                      //     child: Text('setting')),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
+      Bell:
+
+      import 'package:flutter/material.dart';
+
+      class bell extends StatefulWidget {
+        const bell({Key? key}) : super(key: key);
+
+        @override
+        State<bell> createState() => _bellState();
+      }
+
+      class _bellState extends State<bell> {
+        @override
+        Widget build(BuildContext context) {
+          return Scaffold(
+            body: SafeArea(
+              child: Align(
+                alignment: Alignment.center,
+                child: Stack(
+
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        child: Image.asset('image/without.jpeg',
+
+                        ),
+                      ),
+                    ),
+                    Positioned(
+
+                      bottom: 394.5,
+                      right: 150,
+                      child: TextButton(
+
+                          onPressed: (){},
+                          child: Text('SUBSCRIBED',
+                            style: TextStyle(
+
+                                color: Colors.grey[600]
+                            ),)
+                      ),
+                    )
+                    // FlatButton(
+                    //     color: Colors.red[600],
+                    //     onPressed: (){}, child: Text('Subscribe'))
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+      }
+
+
+void imagePickerOption() {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+          child: Container(
+            color: Colors.white,
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Pic Image From",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+
+                    },
+                    icon: const Icon(Icons.camera),
+                    label: const Text("CAMERA"),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+
+                    },
+                    icon: const Icon(Icons.image),
+                    label: const Text("GALLERY"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("CANCEL"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+IMAGE PIKER:
+
+import 'package:flutter/material.dart';
+
+class image_picker extends StatefulWidget {
+  const image_picker({Key? key}) : super(key: key);
+
+  @override
+  State<image_picker> createState() => _image_pickerState();
+}
+
+class _image_pickerState extends State<image_picker> {
+
+
+  void show(){
+
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('IMAGE PICKER'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(
+            height: 40,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12, width: 4),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(8),
+                    ),
+                  ),
+                  child: Image.asset(
+                    'image/empty.png',
+                    width: 170,
+                    height: 170,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 5,
+                  child: IconButton(
+                    onPressed: (){
+
+                    },
+                    icon: const Icon(
+                      Icons.add_a_photo_outlined,
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+                onPressed: (){},
+                icon: const Icon(Icons.add_a_photo_sharp),
+                label: const Text('UPLOAD IMAGE')),
+          )
+        ],
+      ),
+    );
+
+
+  }
+}
+
+CONTAINER:
+
+   Container(
+              height: 90,
+              width: 700,
+              margin: EdgeInsets.all(100),
+              color: Colors.blue[200],
+            ),
+
+              padding: EdgeInsets.only(bottom: 80),
+
+
+              import 'package:flutter/material.dart';
+
+              class MyAppBar extends StatelessWidget {
+                const MyAppBar({required this.title, Key? key}) : super(key: key);
+
+                // Fields in a Widget subclass are always marked "final".
+
+                final Widget title;
+
+                @override
+                Widget build(BuildContext context) {
+                  return Container(
+                    height: 56.0, // in logical pixels
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    decoration: BoxDecoration(color: Colors.blue[500]),
+                    // Row is a horizontal, linear layout.
+                    child: Row(
+                      // <Widget> is the type of items in the list.
+                      children: [
+                        const IconButton(
+                          icon: Icon(Icons.menu),
+                          tooltip: 'Navigation menu',
+                          onPressed: null, // null disables the button
+                        ),
+                        // Expanded expands its child
+                        // to fill the available space.
+                        Expanded(
+                          child: title,
+                        ),
+                        const IconButton(
+                          icon: Icon(Icons.search),
+                          tooltip: 'Search',
+                          onPressed: null,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              }
+
+              class MyScaffold extends StatelessWidget {
+                const MyScaffold({Key? key}) : super(key: key);
+
+                @override
+                Widget build(BuildContext context) {
+                  // Material is a conceptual piece
+                  // of paper on which the UI appears.
+                  return Material(
+                    // Column is a vertical, linear layout.
+                    child: Column(
+                      children: [
+                        MyAppBar(
+                          title: Text(
+                            'Example title',
+                            style: Theme.of(context) //
+                                .primaryTextTheme
+                                .headline6,
+                          ),
+                        ),
+                        const Expanded(
+                          child: Center(
+                            child: Text('Hello, world!'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              }
+
+              void main() {
+                runApp(
+                  const MaterialApp(
+                    title: 'My app', // used by the OS task switcher
+                    home: SafeArea(
+                      child: MyScaffold(),
+                    ),
+                  ),
+                );
+              }
+
+
+
+              import 'package:flutter/material.dart';
+
+              class tryall extends StatefulWidget {
+                const tryall({Key? key}) : super(key: key);
+
+                @override
+                State<tryall> createState() => _tryallState();
+              }
+
+              class _tryallState extends State<tryall> {
+                @override
+                Widget build(BuildContext context) {
+                  return SafeArea(
+                    child: Scaffold(
+                      body: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            color: Colors.cyan[200],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              }

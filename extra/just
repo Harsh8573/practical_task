@@ -1,0 +1,20 @@
+Column(
+            children: [
+              Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(bottom: 40),
+                child: Image.asset("image/flutter.png"),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Container(
+                  color: Colors.cyan[10],
+                  child: Column(
+                    children: [
+                      //
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
