@@ -17,7 +17,7 @@ class _image_picker1State extends State<image_picker1> {
   final picker = ImagePicker();
 
   Future getImageFromGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != Null) {
         picture = File(pickedFile!.path);
@@ -26,7 +26,7 @@ class _image_picker1State extends State<image_picker1> {
   }
 
   Future getImageFromCamera() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
     setState(() {
       if (pickedFile != Null) {
         picture = File(pickedFile!.path);
@@ -72,44 +72,30 @@ class _image_picker1State extends State<image_picker1> {
 
         // Icon(Icons.arrow_back),
       ),
-      body: Align(
-        // alignment: Alignment.center,
-        child: Stack(
-          // alignment: Alignment.topCenter,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => profile()));
-              },
-              child: Container(
-                margin: EdgeInsets.only(bottom: 605),
-                color: Colors.red[100],
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Stack(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        child: CircleAvatar(
-                            maxRadius: 40,
-                            backgroundImage: picture == null
-                                ? AssetImage('image/empty.png')
-                                : Image.file(picture!).image),
-                      ),
-                      Positioned(
-                        right: 1,
-                        child: IconButton(
-                            color: Colors.blue[500],
-                            icon: Icon(Icons.add_a_photo),
-                            onPressed: showOptions),
-                      ),
-                    ],
-                  ),
-                ),
+      body: Container(
+        height: 100,
+        color: Colors.red[100],
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.all(8),
+                child: CircleAvatar(
+                    maxRadius: 40,
+                    backgroundImage: picture == null
+                        ? AssetImage('image/empty.png')
+                        : Image.file(picture!).image),
               ),
-            ),
-          ],
+              Positioned(
+                right: 1,
+                child: IconButton(
+                    color: Colors.blue[500],
+                    icon: Icon(Icons.add_a_photo),
+                    onPressed: showOptions),
+              ),
+            ],
+          ),
         ),
       ),
     );

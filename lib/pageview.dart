@@ -9,7 +9,7 @@ class pageview extends StatefulWidget {
 
 class _pageviewState extends State<pageview> {
   final PageController _controller = PageController(
-    initialPage: 0,
+    initialPage: 0
   );
   @override
   void dispose(){

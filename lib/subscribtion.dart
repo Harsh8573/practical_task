@@ -17,15 +17,12 @@ class _subscribtionState extends State<subscribtion> {
         child: Align(
           alignment: Alignment.center,
           child: Stack(
-
             children: [
-              Expanded(
-                child: Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Image.asset('image/withoutb.jpeg',
-                 ),
-                ),
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                child: Image.asset('image/withoutb.jpeg',
+               ),
               ),
               Positioned(
 

@@ -454,3 +454,44 @@ CONTAINER:
                   );
                 }
               }
+
+                    // validator: (value){
+                                          //   if (value == null || value.isEmpty){
+                                          //     return 'Please enter some text';
+                                          //   }
+                                          //   return null;
+                                          // },
+
+                                          import 'package:flutter/material.dart';
+
+                                          class DropDown extends StatefulWidget {
+                                            const DropDown({Key? key}) : super(key: key);
+
+                                            @override
+                                            State<DropDown> createState() => _DropDownState();
+                                          }
+
+                                          class _DropDownState extends State<DropDown> {
+                                            String? language;
+                                            List items = ['Hindi', 'Gujrati', 'English'];
+
+                                            @override
+                                            Widget build(BuildContext context) {
+                                              return Material(
+                                                  child: Center(
+                                                child: DropdownButton(
+                                                  onChanged: (newvalue) {
+                                                    setState(() {
+                                                      language = newvalue as String?;
+                                                    });
+                                                  },
+                                                  value: language,
+                                                  isExpanded: true,
+                                                  items: items.map((valueItem) {
+                                                    return DropdownMenuItem(value: valueItem, child: Text(valueItem));
+                                                  }).toList(),
+
+                                                ),
+                                              ));
+                                            }
+                                          }
