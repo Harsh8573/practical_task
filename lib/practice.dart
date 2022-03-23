@@ -4,8 +4,11 @@ import 'package:intl/intl.dart';
 import 'package:practical_harsh/pageview.dart';
 import 'package:practical_harsh/strings.dart';
 import 'package:practical_harsh/subscribtion.dart';
+import 'package:practical_harsh/tabbar.dart';
+
 // import ‘package:fluttertoast/fluttertoast.dart’;
 import 'image_picker.dart';
+// import 'package:flutter_background_service/flutter_background_service.dart';
 
 class practice extends StatefulWidget {
   @override
@@ -19,7 +22,7 @@ class _practiceState extends State<practice> {
   var snackBar;
   var validator;
   bool valuefirst = false;
-  bool valuesecond = false;
+
   String? language;
   final _formkey = GlobalKey<FormState>();
   List items = [Strings.hindi, Strings.gujrati, Strings.english];
@@ -33,23 +36,29 @@ class _practiceState extends State<practice> {
     super.initState();
   }
 
+
   DateTime currentValue = DateTime.now();
   final formate = DateFormat('yyyy-MM-dd');
 
   //late DateTime _dateTime = DateTime.now();
   int val = 0;
-// void _showToastMsg(){
-//   Fluttertoast.showToast(msg: Strings.privacy_policy,
-//   backgroundColor: Colors.black,
-//   textColor: Colors.grey[400],
-//     fontSize: 20,
-//     gravity: ToastGravity.BOTTOM,
-//     toastLength: Toast.LENGTH_SHORT,
-//   );
-// }
+
+  // void _showToastMsg() {
+  //   Fluttertoast.showToast(
+  //     msg: Strings.privacy_policy,
+  //     backgroundColor: Colors.black,
+  //     textColor: Colors.grey[400],
+  //     fontSize: 20,
+  //     gravity: ToastGravity.BOTTOM,
+  //     toastLength: Toast.LENGTH_SHORT,
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
 
     return Scaffold(
         appBar: AppBar(
@@ -71,14 +80,14 @@ class _practiceState extends State<practice> {
                       ),
                       Text(
                         Strings.enter_name,
-                        style:
-                            TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ), //Enter Name
                       applyMarginTop(),
                       TextFormField(
-                        validator:(value){
-                          if (value == null || value.isEmpty){
-                            return 'Please enter the name';
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return Strings.please_enter_your_name;
                           }
                           return null;
                         },
@@ -86,13 +95,12 @@ class _practiceState extends State<practice> {
                             hintText: Strings.please_enter_your_name,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(16))),
-
                       ),
                       applyMarginTop(height: 14.0),
                       Text(
                         Strings.select_gender,
-                        style:
-                            TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ), //Select Gender
                       Transform.translate(
                         offset: Offset(-15, 5),
@@ -135,17 +143,16 @@ class _practiceState extends State<practice> {
 
                       Container(
                         child: TextFormField(
-                          validator: (value){
-                            if (value == null || value.isEmpty){
-                              return Strings.date_validator;
-                            }
-                            return null;
-                          },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return Strings.date_validator;
+                              }
+                              return null;
+                            },
                             controller: dateinput,
                             decoration: const InputDecoration(
                                 icon: Icon(Icons.calendar_today_rounded,
-                                color: Colors.blue),
-
+                                    color: Colors.blue),
                                 labelText: Strings.select_date),
                             readOnly: true,
                             onTap: () async {
@@ -159,20 +166,21 @@ class _practiceState extends State<practice> {
                                 print(pickeddate);
                                 currentValue = pickeddate;
                                 String formattedDate =
-                                DateFormat('yyyy-MM-dd').format(pickeddate);
-                                print(formattedDate);
-                                setState(() {
+                                    DateFormat('yyyy-MM-dd').format(pickeddate);
                                   dateinput.text = formattedDate;
-                                });
                               } else {
                                 print(Strings.not_select);
                               }
                             }),
                       ),
 
-                      DropdownButton(
-
-
+                      DropdownButtonFormField(
+                        validator: (value) {
+                          if (value == null ) {
+                            return showAlertDialog(context);
+                          }
+                          return null;
+                        },
                         hint: Text(Strings.select_language),
                         onChanged: (newvalue) {
                           setState(() {
@@ -208,27 +216,34 @@ class _practiceState extends State<practice> {
                         width: width,
                         child: ElevatedButton(
                             onPressed: () {
-                              // _showToastMsg();
-                              Fluttertoast.showToast(
-                                  msg: "Please select privacy policy",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM, // also possible "TOP" and "CENTER"
-                                  backgroundColor: Colors.grey,
-                                  textColor: Colors.black,
-                              );
-                              if(_formkey.currentState!.validate()) {
-                                snackBar = SnackBar(
-                                content: Text(Strings.registration_success),
-                                action: SnackBarAction(
-                                  label: Strings.view,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              );
+                              if (_formkey.currentState!.validate()) {
+
+                                if (this.valuefirst == false) {
+                                  // _showToastMsg();
+
+                                  Fluttertoast.showToast(
+                                      msg: Strings.privacy_policy,
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM, // also possible "TOP" and "CENTER"
+                                      backgroundColor: Colors.grey,
+                                      textColor: Colors.black,
+                                  );
+                                } else {
+                                  snackBar = SnackBar(
+                                    key: _scaffoldKey,
+                                    content: Text(Strings.registration_success),
+                                    action: SnackBarAction(
+                                      label: Strings.ok,
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(context)
+                                            .hideCurrentSnackBar();
+                                      },
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
                               }
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
                             },
                             child: const Text(Strings.save)),
                       ),
@@ -241,6 +256,7 @@ class _practiceState extends State<practice> {
           child: SafeArea(
               child: ListView(
             children: [
+
               Container(
                 color: Colors.green,
                 child: ListTile(
@@ -290,6 +306,23 @@ class _practiceState extends State<practice> {
                   // enabled: false
                 ),
               ),
+              applyMarginTop(height: 6),
+              Container(
+                color: Colors.purple[200],
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => tabbar()),
+                    );
+                  },
+                  title: Text(Strings.tabbar),
+                  leading: Icon(Icons.amp_stories_rounded),
+                  trailing: Icon(Icons.arrow_forward),
+                  subtitle: Text(Strings.tabs),
+                  dense: true,
+                  // enabled: false
+                ),
+              ),
               applyMarginTop(height: 6)
             ],
           )),
@@ -301,4 +334,31 @@ class _practiceState extends State<practice> {
       height: height,
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+
+  Widget okButton = TextButton(
+    child: Text(Strings.ok),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+
+  AlertDialog alert = AlertDialog(
+    title: Text(Strings.alert),
+    content: Text(Strings.select_language_alert),
+    actions: [
+      okButton,
+    ],
+  );
+
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

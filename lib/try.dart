@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practical_harsh/strings.dart';
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({required this.title, Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class MyAppBar extends StatelessWidget {
         children: [
           const IconButton(
             icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu',
+            tooltip: Strings.navigatormenu,
             onPressed: null,
           ),
 
@@ -28,7 +29,7 @@ class MyAppBar extends StatelessWidget {
           ),
           const IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Search',
+            tooltip: Strings.search,
             onPressed: null,
           ),
         ],
@@ -49,7 +50,7 @@ class MyScaffold extends StatelessWidget {
         children: [
           MyAppBar(
             title: Text(
-              'Example title',
+              Strings.example_title,
               style: Theme.of(context) //
                   .primaryTextTheme
                   .headline6,
@@ -57,7 +58,7 @@ class MyScaffold extends StatelessWidget {
           ),
           const Expanded(
             child: Center(
-              child: Text('Hello, world!'),
+              child: Text(Strings.hello_word),
             ),
           ),
         ],
@@ -69,7 +70,7 @@ class MyScaffold extends StatelessWidget {
 void main() {
   runApp(
     const MaterialApp(
-      title: 'My app',
+      title: Strings.myapp,
       home: SafeArea(
         child: MyScaffold(),
       ),

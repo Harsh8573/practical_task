@@ -495,3 +495,11 @@ CONTAINER:
                                               ));
                                             }
                                           }
+ /*indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                      color: Colors.white
+                    ),*/
+                    // isScrollable:true,
+                    // indicatorColor:Colors.white,
+                    // indicatorSize: TabBarIndicatorSize.tab,
+                    // indicatorWeight: 10,

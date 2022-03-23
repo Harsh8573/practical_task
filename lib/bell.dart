@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practical_harsh/practice.dart';
+import 'package:practical_harsh/strings.dart';
 import 'package:practical_harsh/subscribtion.dart';
 
 import 'image_picker.dart';
@@ -14,6 +15,7 @@ class bell extends StatefulWidget {
 class _bellState extends State<bell> {
   int _value = 1;
   String value = " ";
+  String bar = Strings.bell;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +29,7 @@ class _bellState extends State<bell> {
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Image.asset('image/withoutb.jpeg',
-
-                  ),
+                  child: Image.asset(Strings.login_image),
                 ),
               ),
               Positioned(
@@ -41,7 +41,7 @@ class _bellState extends State<bell> {
                     onPressed: (){
                       Navigator.of(context).pop(MaterialPageRoute(builder: (context)=> subscribtion()));
                     },
-                    child: Text('SUBSCRIBED',
+                    child: Text(Strings.subscribed,
                       style: TextStyle(
 
                           color: Colors.grey[600]
@@ -57,11 +57,11 @@ class _bellState extends State<bell> {
                 child: DropdownButton<String>(
                   items:  const [
                     DropdownMenuItem<String>(
-                        value: "normal", child: Icon(Icons.access_time)),
+                        value: Strings.normal, child: Icon(Icons.access_time)),
                     DropdownMenuItem<String>(
-                        value: "silent", child: Icon(Icons.access_alarms)),
+                        value: Strings.vibrate, child: Icon(Icons.access_alarms)),
                     DropdownMenuItem<String>(
-                        value: "silent", child: Icon(Icons.add_alarm_outlined)),
+                        value: Strings.silent, child: Icon(Icons.add_alarm_outlined)),
                   ],
                   onChanged: (_value) {
                     setState(() {

@@ -38,6 +38,8 @@ dependencies:
   image_picker: ^0.8.4+11
   syncfusion_flutter_datepicker: ^19.4.56
   fluttertoast: ^8.0.9
+  flutter_background_service: ^1.0.4
+  http: ^0.13.4
 
 
 dev_dependencies:

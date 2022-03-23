@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:practical_harsh/profile.dart';
+import 'package:practical_harsh/strings.dart';
 
 class image_picker1 extends StatefulWidget {
   const image_picker1({Key? key}) : super(key: key);
@@ -13,6 +13,7 @@ class image_picker1 extends StatefulWidget {
 }
 
 class _image_picker1State extends State<image_picker1> {
+  // var bar = Strings.image_picker;
   File? picture;
   final picker = ImagePicker();
 
@@ -40,14 +41,14 @@ class _image_picker1State extends State<image_picker1> {
         builder: (context) => CupertinoActionSheet(
               actions: [
                 CupertinoActionSheetAction(
-                  child: Text('Photo form Gallery'),
+                  child: Text(Strings.photo_from_gallary),
                   onPressed: () {
                     Navigator.of(context).pop();
                     getImageFromGallery();
                   },
                 ),
                 CupertinoActionSheetAction(
-                  child: Text('Photo form Camera'),
+                  child: Text(Strings.photo_from_camera),
                   onPressed: () {
                     Navigator.of(context).pop();
                     getImageFromCamera();
@@ -62,11 +63,10 @@ class _image_picker1State extends State<image_picker1> {
     return Scaffold(
       // backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        title: Text('Image Picker'),
+        title: Text(Strings.image_picker),
         centerTitle: false,
         leading: IconButton(
-          onPressed: () =>
-            Navigator.pop(context,false),
+          onPressed: () => Navigator.pop(context, false),
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
 
@@ -84,7 +84,7 @@ class _image_picker1State extends State<image_picker1> {
                 child: CircleAvatar(
                     maxRadius: 40,
                     backgroundImage: picture == null
-                        ? AssetImage('image/empty.png')
+                        ? AssetImage(Strings.emptyimage)
                         : Image.file(picture!).image),
               ),
               Positioned(
@@ -98,6 +98,23 @@ class _image_picker1State extends State<image_picker1> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class profile extends StatefulWidget {
+  const profile({Key? key}) : super(key: key);
+
+  @override
+  State<profile> createState() => _profileState();
+}
+
+class _profileState extends State<profile> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 10,
+      color: Colors.red,
     );
   }
 }
