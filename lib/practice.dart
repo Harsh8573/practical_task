@@ -7,6 +7,7 @@ import 'package:practical_harsh/subscribtion.dart';
 import 'package:practical_harsh/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
+import 'const.dart';
 import 'image_picker.dart';
 // import 'package:flutter_background_service/flutter_background_service.dart';
 
@@ -38,7 +39,7 @@ class _practiceState extends State<practice> {
 
 
   DateTime currentValue = DateTime.now();
-  final formate = DateFormat('yyyy-MM-dd');
+  final formate = DateFormat(Constant.date_formate);
 
   //late DateTime _dateTime = DateTime.now();
   int val = 0;
@@ -166,7 +167,7 @@ class _practiceState extends State<practice> {
                                 print(pickeddate);
                                 currentValue = pickeddate;
                                 String formattedDate =
-                                    DateFormat('yyyy-MM-dd').format(pickeddate);
+                                    DateFormat(Constant.date_formate).format(pickeddate);
                                   dateinput.text = formattedDate;
                               } else {
                                 print(Strings.not_select);

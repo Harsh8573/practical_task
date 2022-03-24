@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:practical_harsh/bell.dart';
-import 'package:practical_harsh/practice.dart';
 import 'package:practical_harsh/strings.dart';
 
 class subscribtion extends StatefulWidget {
@@ -22,24 +21,23 @@ class _subscribtionState extends State<subscribtion> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                child: Image.asset(Strings.image_layout,
-               ),
+                child: Image.asset(
+                  Strings.image_layout,
+                ),
               ),
               Positioned(
-
                 bottom: 420,
                 right: 135,
                 child: TextButton(
-
-                  onPressed: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> bell()));
-                  },
-                  child: Text(Strings.subscribe,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red[900]
-                  ),)
-                ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => bell()));
+                    },
+                    child: Text(
+                      Strings.subscribe,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.red[900]),
+                    )),
               )
               // FlatButton(
               //     color: Colors.red[600],
@@ -51,4 +49,3 @@ class _subscribtionState extends State<subscribtion> {
     );
   }
 }
-

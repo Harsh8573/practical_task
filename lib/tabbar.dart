@@ -28,22 +28,9 @@ class _tabbarState extends State<tabbar> {
                    TabBar(
 
                     tabs: [
-                      Tab(child: Text(Strings.screen1,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 16
-                      ),)),
-                      Tab(child: Text(Strings.screen2,style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 16
-                      ),)),
-                      Tab(child: Text(Strings.screen3,style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 16
-                      ),)),
+                      Tab(child: tabTextStyle(text:Strings.screen1)),
+                      Tab(child: tabTextStyle(text:Strings.screen2)),
+                      Tab(child: tabTextStyle(text:Strings.screen3)),
 
                     ],
                   ),
@@ -54,10 +41,9 @@ class _tabbarState extends State<tabbar> {
         ),
         body:  TabBarView(
           children: [
-            centerTextView(text:"Screen 1",
-                fontWeight:FontWeight.normal),
-            centerTextView(text:"Screen 2"),
-            centerTextView(text:"Screen 3"),
+            centerTextView(text:Strings.screen1),
+            centerTextView(text:Strings.screen2),
+            centerTextView(text:Strings.screen3),
 
           ],),),);
   }
@@ -70,4 +56,12 @@ Widget centerTextView({String text = "", FontWeight fontWeight =FontWeight.bold}
             fontSize: 28
         ),)
   );
+}
+Widget tabTextStyle({String text= "", FontWeight fontWeight = FontWeight.bold, Color color=Colors.white, double fontSize= 16.0}) {
+  return Text(text,
+    style: TextStyle(
+        fontWeight: fontWeight,
+        color: color,
+        fontSize: fontSize
+    ),);
 }
