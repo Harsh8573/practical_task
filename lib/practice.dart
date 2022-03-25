@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +11,8 @@ import 'package:practical_harsh/tabbar.dart';
 // import ‘package:fluttertoast/fluttertoast.dart’;
 import 'const.dart';
 import 'image_picker.dart';
+import 'main.dart';
+import 'Model/model.dart';
 // import 'package:flutter_background_service/flutter_background_service.dart';
 
 class practice extends StatefulWidget {
@@ -306,6 +310,22 @@ class _practiceState extends State<practice> {
                   dense: true,
                   // enabled: false
                 ),
+              ),applyMarginTop(height: 6),
+              Container(
+                color: Colors.grey[200],
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => User()),
+                    );
+                  },
+                  title: Text(Strings.fetch_data),
+                  leading: Icon(Icons.amp_stories_rounded),
+                  trailing: Icon(Icons.arrow_forward),
+                  subtitle: Text(Strings.get_method),
+                  dense: true,
+                  // enabled: false
+                ),
               ),
               applyMarginTop(height: 6),
               Container(
@@ -324,6 +344,7 @@ class _practiceState extends State<practice> {
                   // enabled: false
                 ),
               ),
+
               applyMarginTop(height: 6)
             ],
           )),

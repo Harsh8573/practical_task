@@ -1,0 +1,169 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class Service extends StatefulWidget {
+  const Service({Key? key}) : super(key: key);
+
+  @override
+  _ServiceState createState() => _ServiceState();
+}
+
+Future<List<User>> UserData() async {
+  final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
+
+  if (response.statusCode == 200) {
+    List jsonResponse = jsonDecode(response.body);
+    return jsonResponse.map((data) => User.fromJson(data)).toList();
+    // final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
+    //
+    // return parsed.map<User>((json) => User.fromMap(json)).toList();
+    // return User.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load album');
+  }
+}
+
+class User {
+  final String pantone_value, name;
+  final String year;
+
+  User({required this.year, required this.pantone_value, required this.name});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json['name'],
+      year: json['year'],
+      pantone_value: json['pantone_value'],
+    );
+  }
+
+// static fromMap(json) {}
+}
+
+class _ServiceState extends State<Service> {
+  late Future<List<User>> futureUser;
+
+  @override
+  void initState() {
+    super.initState();
+    futureUser = UserData();
+    // UserData() as Future<List<User>>;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Data Fetch"),
+      ),
+      body: Container(
+        child: Card(
+          child: FutureBuilder<List<User>>(
+              future: futureUser,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<User>? data = snapshot.data;
+                  return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(snapshot.data![index].name),
+                          subtitle: Text(snapshot.data![index].year),
+                        );
+                      });
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return Container(
+                  child: Center(
+                    child: Text('Loading...'),
+                  ),
+                );
+              }),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class listview extends StatefulWidget {
+  @override
+  _listviewState createState() => _listviewState();
+}
+Future<List<Data>> fetchData() async{
+  String url = "https://jsonplaceholder.typicode.com/albums";
+  final response = await http.get(Uri.parse(url));
+  if(response.statusCode == 200){
+    List jsonResponse = jsonDecode(response.body);
+    return jsonResponse.map((data) => Data.fromJson(data)).toList();
+  } else {
+    throw Exception('Unexpected error occurred!');
+  }
+}
+class Data{
+  int userId;
+  int id;
+  String title;
+
+  Data({required this.userId,required this.id,required this.title});
+
+  factory Data.fromJson(Map<String, dynamic> json){
+    return Data(
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
+class _listviewState extends State<listview> {
+
+  late Future<List<Data>> futureData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    futureData = fetchData();
+  }
+  //final List<String> entries = <String>['A', 'B', 'C'];
+  //final List<int> colorCodes = <int>[600, 500, 100];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: FutureBuilder <List<Data>>(
+          future: futureData,
+          builder: (context ,snapshot){
+            if(snapshot.hasData){
+              List<Data>? data = snapshot.data;
+              return ListView.builder(
+                  itemCount:snapshot.data!.length,
+                  itemBuilder: (BuildContext context,int index){
+                    return Container(
+                      height: 75,
+                      color: Colors.cyan,
+                      child: Center(child: Text("${data![index].userId.toString()}""-${data[index].id.toString()}-${data[index].title}"
+                      ),
+                      ),);
+                  });
+            }else if(snapshot.hasError){
+              return Text("${snapshot.error}");
+            }return CircularProgressIndicator();
+          }
+      ),),
+    );
+
+
+  }
+}
