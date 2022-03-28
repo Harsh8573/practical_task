@@ -47,23 +47,25 @@ class _UserState extends State<User> {
               return Container(
                   // color: Colors.[100],
                   child: ListView.builder(
-                // itemCount: null==snapshot.data?0:snapshot.data??length,
+                itemCount:  snapshot
+                    .data ==null?0: snapshot
+                    .data?.data?.length,
                 itemBuilder: (context, index) => ListTile(
                   leading: (Icon(Icons.eleven_mp)),
-                  title: Text(snapshot.data!.data![0].name.toString()),
+                  title: Text(snapshot.data!.data![index].name!),
                   subtitle: Text(
-                    snapshot.data!.data![1].toString(),
+                    snapshot.data!.data![index].year!.toString(),
                   ),
                   isThreeLine: true,
                   dense: false,
 
-                  trailing: Container(
-
-                    padding: EdgeInsets.only(left: 100),
-
-                      color: Colors.blueAccent[200]
-
-                  ),
+                  // trailing: Container(
+                  //
+                  //   padding: EdgeInsets.only(left: 100),
+                  //
+                  //     color: Colors.blueAccent[200]
+                  //
+                  // ),
                 ),
               ));
               // Text(snapshot.data!.data![0].id.toString());
