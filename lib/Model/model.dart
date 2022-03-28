@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practical_harsh/strings.dart';
 
 import 'UserData.dart';
 
@@ -12,7 +13,7 @@ Future<UserData> fetchAlbum() async {
   if (response.statusCode == 200) {
     return UserData.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load album');
+    throw Exception(Strings.failed_to_load);
   }
 }
 
@@ -37,7 +38,7 @@ class _UserState extends State<User> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Fetch Data'),
+        title: Text(Strings.fetch_data),
       ),
       body: Center(
         child: FutureBuilder<UserData>(
@@ -47,26 +48,38 @@ class _UserState extends State<User> {
               return Container(
                   // color: Colors.[100],
                   child: ListView.builder(
-                itemCount:  snapshot
-                    .data ==null?0: snapshot
-                    .data?.data?.length,
-                itemBuilder: (context, index) => ListTile(
-                  leading: (Icon(Icons.eleven_mp)),
-                  title: Text(snapshot.data!.data![index].name!),
-                  subtitle: Text(
-                    snapshot.data!.data![index].year!.toString(),
-                  ),
-                  isThreeLine: true,
-                  dense: false,
-
-                  // trailing: Container(
-                  //
-                  //   padding: EdgeInsets.only(left: 100),
-                  //
-                  //     color: Colors.blueAccent[200]
-                  //
-                  // ),
-                ),
+                itemCount:
+                    snapshot.data == null ? 0 : snapshot.data?.data?.length,
+                itemBuilder: (context, index) {
+                  var color = "0xFF" +
+                      snapshot.data!.data![index].color!.substring(1, 7);
+                  var value = Color(int.parse(color));
+                  return Card(
+                    child: ListTile(
+                      leading: (Icon(Icons.eleven_mp)),
+                      title: Text(snapshot.data!.data![index].name!),
+                      subtitle: Text(
+                        snapshot.data!.data![index].year!.toString(),
+                      ),
+                      trailing: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Container(
+                          height: 60,
+                          width: 75,
+                          color: value,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            // child: Text(
+                            //     '${snapshot.data!.data![index].color
+                            //         ?.substring(1, 7)}'),
+                          ),
+                        ),
+                      ),
+                      isThreeLine: true,
+                      dense: false,
+                    ),
+                  );
+                },
               ));
               // Text(snapshot.data!.data![0].id.toString());
             } else if (snapshot.hasError) {

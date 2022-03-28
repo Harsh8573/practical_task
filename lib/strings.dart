@@ -56,7 +56,7 @@ class Strings {
   static const String hello_word = 'Hello, world!';
   static const String myapp = 'My app';
   static const String tabbar = "TabBar";
-  static const String fetch_data = "Data";
+  static const String data = "Data";
   static const String tabs = "Tabs";
   static const String get_method = "getMethod";
 
@@ -65,6 +65,9 @@ class Strings {
   static const String screen2 = "Screen 2";
   static const String screen3 = "Screen 3";
 
+  //data fetch
+  static const String fetch_data = "Fetch Data";
+  static const String failed_to_load = 'Failed to load album';
 
 
 

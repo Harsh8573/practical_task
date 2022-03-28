@@ -774,3 +774,7 @@ class _UserState extends State<User> {
     );
   }
 }
+
+
+print(gfg.split(""));
+List<String> dateParts = color.split("#");
