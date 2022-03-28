@@ -46,42 +46,47 @@ class _UserState extends State<User> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Container(
-                  // color: Colors.[100],
-                  child: ListView.builder(
-                itemCount:
-                    snapshot.data == null ? 0 : snapshot.data?.data?.length,
-                itemBuilder: (context, index) {
-                  var color = "0xFF" +
-                      snapshot.data!.data![index].color!.substring(1, 7);
-                  var value = Color(int.parse(color));
-                  return Card(
-                    child: ListTile(
-                      leading: (Icon(Icons.eleven_mp)),
-                      title: Text(snapshot.data!.data![index].name!),
-                      subtitle: Text(
-                        snapshot.data!.data![index].year!.toString(),
-                      ),
-                      trailing: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          height: 60,
-                          width: 75,
-                          color: value,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            // child: Text(
-                            //     '${snapshot.data!.data![index].color
-                            //         ?.substring(1, 7)}'),
+                // color: Colors.[100],
+                child: ListView.builder(
+                  itemCount:
+                      snapshot.data == null ? 0 : snapshot.data?.data?.length,
+                  itemBuilder: (context, index) {
+                    var color = "0xFF" +
+                        snapshot.data!.data![index].color!.substring(1, 7);
+                    var value = Color(int.parse(color));
+                    return Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Card(
+                        child: ListTile(
+                          leading: (Icon(Icons.eleven_mp)),
+                          title: Text(snapshot.data!.data![index].name!),
+                          subtitle: Text(
+                            snapshot.data!.data![index].year!.toString(),
                           ),
+                          trailing: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Container(
+                              height: 60,
+                              width: 75,
+                              color: value,
+                              child: Center(
+                                child: Text(
+                                  '${snapshot.data!.data![index].color?.substring(1, 7)}',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
+                                ),
+                              ),
+                            ),
+                          ),
+                          isThreeLine: true,
+                          dense: false,
                         ),
                       ),
-                      isThreeLine: true,
-                      dense: false,
-                    ),
-                  );
-                },
-              ));
-              // Text(snapshot.data!.data![0].id.toString());
+                    );
+                  },
+                ),
+              );
             } else if (snapshot.hasError) {
               return Text('110--${snapshot.error}');
             }
