@@ -62,6 +62,7 @@ class _ProductListState extends State<ProductList> {
                             MaterialPageRoute(
                               builder: (context) => ProductDetail(
                                 id:snapshot.data!.data![index].id,
+                                color:snapshot.data!.data![index].color,
                                 name: snapshot.data!.data![index].name!.toString(),),
                             ),
                           );
