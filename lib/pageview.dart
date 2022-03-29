@@ -12,7 +12,8 @@ class pageview extends StatefulWidget {
 class _pageviewState extends State<pageview> {
 
   final PageController _controller = PageController(
-    initialPage: 0
+    initialPage: 0,
+    viewportFraction: 1.2
   );
   @override
   void dispose(){
@@ -21,13 +22,14 @@ class _pageviewState extends State<pageview> {
   }
   @override
   Widget build(BuildContext context) {
-    return PageView(
+    return PageView.builder(
        controller:_controller,
-      children: [
-        pageview1(),
-        pageview2(),
-      ],
-      scrollDirection: Axis.vertical,
+      scrollDirection: Axis.horizontal, itemBuilder: (BuildContext context, int index) {  return Container(
+      color: Colors.blue,
+      child: Center(
+        child: Text(Strings.hello),
+      ),
+    );},
     );
   }
 }

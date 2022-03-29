@@ -9,10 +9,11 @@ import 'package:practical_harsh/subscribtion.dart';
 import 'package:practical_harsh/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
+import 'extra/pass_data.dart';
 import 'const.dart';
 import 'image_picker.dart';
 import 'main.dart';
-import 'Model/model.dart';
+import 'Model/product_list.dart';
 // import 'package:flutter_background_service/flutter_background_service.dart';
 
 class practice extends StatefulWidget {
@@ -316,7 +317,7 @@ class _practiceState extends State<practice> {
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => User()),
+                      MaterialPageRoute(builder: (context) => ProductList()),
                     );
                   },
                   title: Text(Strings.fetch_data),
@@ -343,9 +344,25 @@ class _practiceState extends State<practice> {
                   dense: true,
                   // enabled: false
                 ),
+              ),applyMarginTop(height: 6),
+              Container(
+                color: Colors.orangeAccent[200],
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Detail()),
+                    );
+                  },
+                  title: Text(Strings.pass_data),
+                  leading: Icon(Icons.amp_stories_rounded),
+                  trailing: Icon(Icons.arrow_forward),
+                  subtitle: Text(Strings.tabs),
+                  dense: true,
+                  // enabled: false
+                ),
               ),
 
-              applyMarginTop(height: 6)
+              applyMarginTop(height: 6),
             ],
           )),
         ));

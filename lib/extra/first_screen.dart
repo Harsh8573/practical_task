@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:practical_harsh/strings.dart';
 
-import 'UserData.dart';
+import '../Model/UserData.dart';
+import '../Model/product_detail.dart';
 
 Future<UserData> profileAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
@@ -17,7 +18,7 @@ Future<UserData> profileAlbum() async {
   }
 }
 class UserProfile extends StatefulWidget {
-  const UserProfile({Key? key}) : super(key: key);
+  const UserProfile(UserData? data, {Key? key, UserData? name}) : super(key: key);
 
   @override
   State<UserProfile> createState() => _UserProfileState();
@@ -38,7 +39,7 @@ class _UserProfileState extends State<UserProfile> {
             if (snapshot.hasData) {
               return Container(
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: 1,
                   // itemCount:
                   //     snapshot.data == null ? 0 : snapshot.data?.data?.length,
                   itemBuilder: (context, index) {
@@ -58,25 +59,15 @@ class _UserProfileState extends State<UserProfile> {
                       style: TextStyle(color: Colors.white),
                     );
 
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        child: Container(
-                          color: value,
-                          child: Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  user_id, name, year],
-                              ),
-                            ),
-                          ),
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>ProductDetail(),
+                          settings : RouteSettings(
+                            arguments:snapshot.data!.data![index],
                         ),
-                      ),
+                        ),
+                        );
+                      },
                     );
                   },
                 ),
