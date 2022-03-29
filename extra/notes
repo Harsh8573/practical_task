@@ -967,3 +967,6 @@ class _UserState extends State<User> {
 //     );
 //   }
 // }
+export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
+echo $PATH
+which flutter
