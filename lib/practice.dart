@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:practical_harsh/pageview.dart';
@@ -92,6 +93,9 @@ class _practiceState extends State<practice> {
                       ), //Enter Name
                       applyMarginTop(),
                       TextFormField(
+                        keyboardType: TextInputType.name
+                        ,
+                        inputFormatters: [ FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]')),],
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return Strings.please_enter_your_name;
@@ -99,6 +103,7 @@ class _practiceState extends State<practice> {
                           return null;
                         },
                         decoration: InputDecoration(
+
                             hintText: Strings.please_enter_your_name,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(16))),
