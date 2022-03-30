@@ -39,7 +39,7 @@ class _ProductListapiState extends State<ProductListapi> {
 
   @override
   Widget build(BuildContext context) {
-    final slug = 'govadiyo';
+    final slug = 'harsh';
     final url = Uri.encodeFull('https://runknown/${slug}');
 
     return Scaffold(
@@ -69,8 +69,9 @@ class _ProductListapiState extends State<ProductListapi> {
                             MaterialPageRoute(
                               builder: (context) => ProductDetail(
                                 id:snapshot.data!.data!.id,
-                                color:snapshot.data!.data!.color,
-                                name: snapshot.data!.data!.name!.toString(),),
+                                // color:snapshot.data!.data!.color,
+                                // name: snapshot.data!.data!.name!.toString(),
+                              ),
                             ),
                           );
                         },
