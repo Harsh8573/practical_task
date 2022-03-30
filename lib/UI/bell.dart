@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/practice.dart';
-import 'package:practical_harsh/strings.dart';
-import 'package:practical_harsh/subscribtion.dart';
+import 'package:practical_harsh/UI/practice.dart';
+import 'package:practical_harsh/main/strings.dart';
+import 'package:practical_harsh/UI/subscribtion.dart';
 
 import 'image_picker.dart';
 

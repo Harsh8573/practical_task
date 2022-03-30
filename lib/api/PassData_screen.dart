@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../strings.dart';
-import 'UserData.dart';
+import '../main/strings.dart';
+import '../Model/UserData.dart';
 
 class ProductDetail extends StatefulWidget {
   final int? id;

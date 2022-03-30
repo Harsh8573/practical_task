@@ -3,9 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/main/strings.dart';
 
-import '../Model/UserData.dart';
+import 'UserData.dart';
 
 Future<UserData> profileAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));

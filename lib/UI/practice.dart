@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:practical_harsh/pageview.dart';
-import 'package:practical_harsh/strings.dart';
-import 'package:practical_harsh/subscribtion.dart';
-import 'package:practical_harsh/tabbar.dart';
+import 'package:practical_harsh/UI/pageview.dart';
+import 'package:practical_harsh/main/strings.dart';
+import 'package:practical_harsh/UI/subscribtion.dart';
+import 'package:practical_harsh/UI/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
-import 'Model/passdata.dart';
-import 'extra/pass_data.dart';
-import 'const.dart';
+import '../api/passdata.dart';
+import '../extra/pass_data.dart';
+import '../main/const.dart';
+import '../post/postdata.dart';
 import 'image_picker.dart';
-import 'main.dart';
-import 'Model/product_list.dart';
+import '../main/main.dart';
+import '../Model/product_list.dart';
 // import 'package:flutter_background_service/flutter_background_service.dart';
 
 class practice extends StatefulWidget {
@@ -375,6 +376,23 @@ class _practiceState extends State<practice> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => ProductListapi()),
+                    );
+                  },
+                  title: Text(Strings.pass_apidata),
+                  leading: Icon(Icons.amp_stories_rounded),
+                  trailing: Icon(Icons.arrow_forward),
+                  subtitle: Text(Strings.tabs),
+                  dense: true,
+                  // enabled: false
+                ),
+              ),
+              applyMarginTop(height: 6),
+              Container(
+                color: Colors.blueGrey[200],
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => PostData()),
                     );
                   },
                   title: Text(Strings.pass_apidata),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/bell.dart';
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/UI/bell.dart';
+import 'package:practical_harsh/main/strings.dart';
 
 class subscribtion extends StatefulWidget {
   const subscribtion({Key? key}) : super(key: key);

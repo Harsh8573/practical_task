@@ -9,6 +9,7 @@ String apidataToJson(Apidata data) => json.encode(data.toJson());
 
 class Apidata {
   Apidata({
+
     Data? data,
     Support? support,
   }) {
@@ -24,6 +25,8 @@ class Apidata {
 
   Data? _data;
   Support? _support;
+
+
 
   Apidata copyWith({
     Data? data,
@@ -133,6 +136,8 @@ class Data {
   int? _year;
   String? _color;
   String? _pantoneValue;
+
+
 
   Data copyWith({
     int? id,

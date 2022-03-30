@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/practice.dart';
+import 'package:practical_harsh/UI/practice.dart';
 
 
-import 'image_picker.dart';
+import '../UI/image_picker.dart';
 
 void main() {
   // ignore: prefer_const_constructors

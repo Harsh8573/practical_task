@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/main/strings.dart';
 
 class image_picker1 extends StatefulWidget {
   const image_picker1({Key? key}) : super(key: key);

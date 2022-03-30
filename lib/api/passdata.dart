@@ -3,11 +3,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/main/strings.dart';
 
-import 'UserData.dart';
+import '../Model/UserData.dart';
 import 'apidata.dart';
-import 'product_detail.dart';
+import '../Model/product_detail.dart';
 
 Future<Apidata> fetchapi() async {
   // final slug = 'govadiyo';
@@ -39,8 +39,8 @@ class _ProductListapiState extends State<ProductListapi> {
 
   @override
   Widget build(BuildContext context) {
-    final slug = 'harsh';
-    final url = Uri.encodeFull('https://runknown/${slug}');
+    final addpath = 'harsh';
+    final url = Uri.encodeFull('https://runknown/${addpath}');
 
     return Scaffold(
       appBar: AppBar(
@@ -51,6 +51,14 @@ class _ProductListapiState extends State<ProductListapi> {
         child: FutureBuilder<Apidata>(
           future: futureAlbum,
           builder: (context, snapshot) {
+
+            // final users = snapshot.data?.data?.id.toString();
+            //   // var i ="";
+            // final List<String> descrip = [];
+            // for(var i = 0;i < users; i++){
+            //
+            //   descrip.add(users!);
+            // }
             if (snapshot.hasData) {
               return Container(
                 child: ListView.builder(
@@ -69,8 +77,8 @@ class _ProductListapiState extends State<ProductListapi> {
                             MaterialPageRoute(
                               builder: (context) => ProductDetail(
                                 id:snapshot.data!.data!.id,
-                                // color:snapshot.data!.data!.color,
-                                // name: snapshot.data!.data!.name!.toString(),
+                                color:snapshot.data!.data!.color,
+                                name: snapshot.data!.data!.name!.toString(),
                               ),
                             ),
                           );

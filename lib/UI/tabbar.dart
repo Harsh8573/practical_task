@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/main/strings.dart';
 
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/strings.dart';
+import 'package:practical_harsh/main/strings.dart';
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({required this.title, Key? key}) : super(key: key);
