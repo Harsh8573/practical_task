@@ -57,6 +57,7 @@ class Strings {
   static const String myapp = 'My app';
   static const String tabbar = "TabBar";
   static const String pass_data = "Pass Data";
+  static const String pass_apidata = "apidata";
 
   static const String data = "Data";
   static const String tabs = "Tabs";

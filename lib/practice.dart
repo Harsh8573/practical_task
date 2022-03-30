@@ -9,6 +9,7 @@ import 'package:practical_harsh/subscribtion.dart';
 import 'package:practical_harsh/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
+import 'Model/passdata.dart';
 import 'extra/pass_data.dart';
 import 'const.dart';
 import 'image_picker.dart';
@@ -363,6 +364,22 @@ class _practiceState extends State<practice> {
               ),
 
               applyMarginTop(height: 6),
+              Container(
+                color: Colors.blueGrey[200],
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProductListapi()),
+                    );
+                  },
+                  title: Text(Strings.pass_apidata),
+                  leading: Icon(Icons.amp_stories_rounded),
+                  trailing: Icon(Icons.arrow_forward),
+                  subtitle: Text(Strings.tabs),
+                  dense: true,
+                  // enabled: false
+                ),
+              ),
             ],
           )),
         ));
