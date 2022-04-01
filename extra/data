@@ -1,0 +1,85 @@
+///// PASS DATA METHODS: "https://mundanecode.com/posts/passing-data-between-screens-in-flutter/#:~:text=In%20this%20article%20we%20will,screen%20to%20another%20in%20flutter."
+
+// 1)-Shared Preferance
+Shared PReferance : its use for pass the data to other screen , its not recommended but its an option for pass the data .
+we can use shared preferance for pass small type of data simply...
+
+-- #Code
+String _message;
+. . .
+. . .
+SharedPreferences prefs = await SharedPreferences.getInstance();
+setState(() {
+    _message = (prefs.getString('message') ?? "No data received");
+});
+
+// 2)- Using constructors
+Using Constructor : we pass data which we want to send to other screen and then Store That Message in variable in
+second Screen And also define in constructor inthis.name of variable, If We Are Using Stf Claass Then Also Put
+Var As Well AS Constructor IN State class Constructor..
+
+Then Display The Data By (data.id,data.name)
+
+-- #Code
+
+1st Screen:
+Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>
+        ConstructorScreen("Hello from main to constructor screen")),
+    );
+
+2nd Screen:
+class ConstructorScreen extends StatelessWidget {
+String message;
+
+  ConstructorScreen(String m){
+    this.message = m;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Screen with constructor data"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Text("Data received"), Text(message)],
+        ),
+      ),
+    );
+  }
+}
+
+// 3)- Using arguments in navigator
+The pushNamed method of Nagigator can be used for passing arguments.
+Complex objects and primitive data types can be passed. The snippet below shows how to pass a string.
+
+1st Screen:
+Navigator.pushNamed(
+    context,
+    '/nav',
+    arguments: "Hello from main to Navigation screen",
+);
+
+And this argument can be used in the new screen being opened.
+2nd Screen :
+
+final String _message = ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Screen with navigation data"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Text("Data received"),
+            Text(_message)],
+        ),
+      ),
+    );
+
+
+    ////////////////  SEND DATA IN NEW SCREEN:  "https://docs.flutter.dev/cookbook/navigation/passing-data"

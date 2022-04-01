@@ -10,6 +10,7 @@ import 'package:practical_harsh/UI/subscribtion.dart';
 import 'package:practical_harsh/UI/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
+import '../HomePage/HomeScreen.dart';
 import '../api/passdata.dart';
 import '../extra/pass_data.dart';
 import '../main/const.dart';
@@ -227,38 +228,43 @@ class _practiceState extends State<practice> {
                       applyMarginTop(height: 40),
                       SizedBox(
                         width: width,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              if (_formkey.currentState!.validate()) {
+                        child: Builder(
+                          builder: (context) {
+                            return ElevatedButton(
+                                onPressed: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                                  if (_formkey.currentState!.validate()) {
 
-                                if (this.valuefirst == false) {
-                                  // _showToastMsg();
+                                    if (this.valuefirst == false) {
+                                      // _showToastMsg();
 
-                                  Fluttertoast.showToast(
-                                      msg: Strings.privacy_policy,
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.BOTTOM, // also possible "TOP" and "CENTER"
-                                      backgroundColor: Colors.grey,
-                                      textColor: Colors.black,
-                                  );
-                                } else {
-                                  snackBar = SnackBar(
-                                    key: _scaffoldKey,
-                                    content: Text(Strings.registration_success),
-                                    action: SnackBarAction(
-                                      label: Strings.ok,
-                                      onPressed: () {
-                                        ScaffoldMessenger.of(context)
-                                            .hideCurrentSnackBar();
-                                      },
-                                    ),
-                                  );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
-                                }
-                              }
-                            },
-                            child: const Text(Strings.save)),
+                                      Fluttertoast.showToast(
+                                          msg: Strings.privacy_policy,
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM, // also possible "TOP" and "CENTER"
+                                          backgroundColor: Colors.grey,
+                                          textColor: Colors.black,
+                                      );
+                                    } else {
+                                      snackBar = SnackBar(
+                                        key: _scaffoldKey,
+                                        content: Text(Strings.registration_success),
+                                        action: SnackBarAction(
+                                          label: Strings.ok,
+                                          onPressed: () {
+                                            ScaffoldMessenger.of(context)
+                                                .hideCurrentSnackBar();
+                                          },
+                                        ),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    }
+                                  }
+                                },
+                                child: const Text(Strings.save));
+                          }
+                        ),
                       ),
                     ],
                   )),
@@ -385,14 +391,13 @@ class _practiceState extends State<practice> {
                   dense: true,
                   // enabled: false
                 ),
-              ),
-              applyMarginTop(height: 6),
+              ),    applyMarginTop(height: 6),
               Container(
                 color: Colors.blueGrey[200],
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => PostData()),
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
                     );
                   },
                   title: Text(Strings.pass_apidata),
@@ -403,6 +408,23 @@ class _practiceState extends State<practice> {
                   // enabled: false
                 ),
               ),
+              applyMarginTop(height: 6),
+              // Container(
+              //   color: Colors.blueGrey[200],
+              //   child: ListTile(
+              //     onTap: () {
+              //       Navigator.of(context).push(
+              //         MaterialPageRoute(builder: (context) => PostData()),
+              //       );
+              //     },
+              //     title: Text(Strings.pass_apidata),
+              //     leading: Icon(Icons.amp_stories_rounded),
+              //     trailing: Icon(Icons.arrow_forward),
+              //     subtitle: Text(Strings.tabs),
+              //     dense: true,
+              //     // enabled: false
+              //   ),
+              // ),
             ],
           )),
         ));
