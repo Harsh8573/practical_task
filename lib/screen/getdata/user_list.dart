@@ -3,15 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:practical_harsh/screen/getdata/user_details.dart';
-import 'package:practical_harsh/screen/getdata/user_profile.dart';
 import 'package:practical_harsh/main/strings.dart';
-
+import 'package:practical_harsh/screen/getdata/user_profile.dart';
 import '../../extra/getdataa/Product_Data.dart';
-
-
-
-
 
 Future<ProductData> userAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
@@ -32,13 +26,12 @@ class UserList extends StatefulWidget {
 class _UserListState extends State<UserList> {
   late Future<ProductData> futureAlbum;
 
-
   @override
   void initState() {
-
     super.initState();
     futureAlbum = userAlbum();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +43,13 @@ class _UserListState extends State<UserList> {
         child: FutureBuilder<ProductData>(
           future: futureAlbum,
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
+            if (snapshot.hasData) {++
               return Container(
                 child: ListView.builder(
                   itemCount:
-                  snapshot.data == null ? 0 : snapshot.data?.data?.length,
+                      snapshot.data == null ? 0 : snapshot.data?.data?.length,
                   itemBuilder: (context, index) {
-                    var color = "0xFF" +
+                    var color = Strings.OxFF +
                         snapshot.data!.data![index].color!.substring(1, 7);
                     var value = Color(int.parse(color));
                     return Padding(
@@ -67,39 +60,43 @@ class _UserListState extends State<UserList> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => UserProfile(
-                                id:snapshot.data!.data![index].id,
-                                color:snapshot.data!.data![index].color.toString(),
-                                name: snapshot.data!.data![index].name!.toString(),
-                            ),
+                                id: snapshot.data!.data![index].id,
+                                color: snapshot.data!.data![index].color
+                                    .toString(),
+                                name: snapshot.data!.data![index].name!
+                                    .toString(),
+                              ),
                             ),
                           );
                         },
                         child: Card(
                             child: ListTile(
-                              leading: Text(snapshot.data!.data![index].id.toString()),
-                              title: Text(snapshot.data!.data![index].name!.toString()),
-                              subtitle: Text(
-                                snapshot.data!.data![index].year!.toString(),
-                              ),
-                              trailing: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Container(
-                                  height: 60,
-                                  width: 75,
-                                  color: value,
-                                  child: Center(
-                                    child: Text(
-                                      '${snapshot.data!.data![index].color?.substring(1, 7)}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13),
-                                    ),
-                                  ),
+                          leading:
+                              Text(snapshot.data!.data![index].id.toString()),
+                          title: Text(
+                              snapshot.data!.data![index].name!.toString()),
+                          subtitle: Text(
+                            snapshot.data!.data![index].year!.toString(),
+                          ),
+                          trailing: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Container(
+                              height: 60,
+                              width: 75,
+                              color: value,
+                              child: Center(
+                                child: Text(
+                                  '${snapshot.data!.data![index].color?.substring(1, 7)}',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
                                 ),
                               ),
-                              isThreeLine: true,
-                              dense: false,
-                            )),
+                            ),
+                          ),
+                          isThreeLine: true,
+                          dense: false,
+                        )),
                       ),
                     );
                   },

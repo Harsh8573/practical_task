@@ -1,4 +1,9 @@
 class Strings {
+
+  //screen-getdata-userlist
+  static const String OxFF = "0xFF";
+  // static const String OxFF = "0xFF";
+
   static const String practice = "practice";
   static const String hindi = "Hindi";
   static const String gujrati = "gujrati";

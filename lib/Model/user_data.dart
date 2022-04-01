@@ -1,29 +1,41 @@
 import 'dart:convert';
+
 /// data : {"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","pantone_value":"15-4020"}
 /// support : {"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}
 
 UserData userDataFromJson(String str) => UserData.fromJson(json.decode(str));
+
 String userDataToJson(UserData data) => json.encode(data.toJson());
+
 class UserData {
   UserData({
-      Data? data, 
-      Support? support,}){
+    Data? data,
+    Support? support,
+  }) {
     _data = data;
     _support = support;
-}
+  }
 
   UserData.fromJson(dynamic json) {
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    _support = json['support'] != null ? Support.fromJson(json['support']) : null;
+    _support =
+        json['support'] != null ? Support.fromJson(json['support']) : null;
   }
+
   Data? _data;
   Support? _support;
-UserData copyWith({  Data? data,
-  Support? support,
-}) => UserData(  data: data ?? _data,
-  support: support ?? _support,
-);
+
+  UserData copyWith({
+    Data? data,
+    Support? support,
+  }) =>
+      UserData(
+        data: data ?? _data,
+        support: support ?? _support,
+      );
+
   Data? get data => _data;
+
   Support? get support => _support;
 
   Map<String, dynamic> toJson() {
@@ -36,34 +48,43 @@ UserData copyWith({  Data? data,
     }
     return map;
   }
-
 }
 
 /// url : "https://reqres.in/#support-heading"
 /// text : "To keep ReqRes free, contributions towards server costs are appreciated!"
 
 Support supportFromJson(String str) => Support.fromJson(json.decode(str));
+
 String supportToJson(Support data) => json.encode(data.toJson());
+
 class Support {
   Support({
-      String? url, 
-      String? text,}){
+    String? url,
+    String? text,
+  }) {
     _url = url;
     _text = text;
-}
+  }
 
   Support.fromJson(dynamic json) {
     _url = json['url'];
     _text = json['text'];
   }
+
   String? _url;
   String? _text;
-Support copyWith({  String? url,
-  String? text,
-}) => Support(  url: url ?? _url,
-  text: text ?? _text,
-);
+
+  Support copyWith({
+    String? url,
+    String? text,
+  }) =>
+      Support(
+        url: url ?? _url,
+        text: text ?? _text,
+      );
+
   String? get url => _url;
+
   String? get text => _text;
 
   Map<String, dynamic> toJson() {
@@ -72,30 +93,26 @@ Support copyWith({  String? url,
     map['text'] = _text;
     return map;
   }
-
 }
 
-/// id : 1
-/// name : "cerulean"
-/// year : 2000
-/// color : "#98B2D1"
-/// pantone_value : "15-4020"
-
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
+
 String dataToJson(Data data) => json.encode(data.toJson());
+
 class Data {
   Data({
-      int? id, 
-      String? name, 
-      int? year, 
-      String? color, 
-      String? pantoneValue,}){
+    int? id,
+    String? name,
+    int? year,
+    String? color,
+    String? pantoneValue,
+  }) {
     _id = id;
     _name = name;
     _year = year;
     _color = color;
     _pantoneValue = pantoneValue;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _id = json['id'];
@@ -104,26 +121,36 @@ class Data {
     _color = json['color'];
     _pantoneValue = json['pantone_value'];
   }
+
   int? _id;
   String? _name;
   int? _year;
   String? _color;
   String? _pantoneValue;
-Data copyWith({  int? id,
-  String? name,
-  int? year,
-  String? color,
-  String? pantoneValue,
-}) => Data(  id: id ?? _id,
-  name: name ?? _name,
-  year: year ?? _year,
-  color: color ?? _color,
-  pantoneValue: pantoneValue ?? _pantoneValue,
-);
+
+  Data copyWith({
+    int? id,
+    String? name,
+    int? year,
+    String? color,
+    String? pantoneValue,
+  }) =>
+      Data(
+        id: id ?? _id,
+        name: name ?? _name,
+        year: year ?? _year,
+        color: color ?? _color,
+        pantoneValue: pantoneValue ?? _pantoneValue,
+      );
+
   int? get id => _id;
+
   String? get name => _name;
+
   int? get year => _year;
+
   String? get color => _color;
+
   String? get pantoneValue => _pantoneValue;
 
   Map<String, dynamic> toJson() {
@@ -135,5 +162,4 @@ Data copyWith({  int? id,
     map['pantone_value'] = _pantoneValue;
     return map;
   }
-
 }

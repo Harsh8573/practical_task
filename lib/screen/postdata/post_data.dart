@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:practical_harsh/Model/postmodel.dart';
 
-class PostData extends StatefulWidget {
-  const PostData({Key? key}) : super(key: key);
+class PostScreen extends StatefulWidget {
+  const PostScreen({Key? key}) : super(key: key);
 
   @override
-  State<PostData> createState() => _PostDataState();
+  State<PostScreen> createState() => _PostScreenState();
 }
+
 // Future<Postmodel> submitdata(int userid,int id,String title)async{
 //
 //   var response = await http.post(Uri.parse("https://jsonplaceholder.typicode.com/albums"),
@@ -19,18 +18,17 @@ class PostData extends StatefulWidget {
 //     // Pos
 //   }
 // }
-class _PostDataState extends State<PostData> {
+class _PostScreenState extends State<PostScreen> {
   final url = "https://reqres.in/api/login";
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-TextEditingController emailController = TextEditingController();
-TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
@@ -39,26 +37,24 @@ TextEditingController passwordController = TextEditingController();
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    hintText: "Enter email",
-                    border: OutlineInputBorder()
-                  ),
+                      hintText: "Enter email", border: OutlineInputBorder()),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    hintText: "Password",
-                    border: OutlineInputBorder()
-                  ),
-                ), SizedBox(
+                      hintText: "Password", border: OutlineInputBorder()),
+                ),
+                SizedBox(
                   height: 10,
                 ),
-Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [ElevatedButton(onPressed: (){}, child: Text("Press"))],
-)
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(onPressed: () {}, child: Text("Press"))
+                  ],
+                )
               ],
             ),
           ),
