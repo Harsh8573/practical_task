@@ -1,34 +1,23 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-import 'UserData.dart';
-
-class ProductDetail extends StatefulWidget {
+class UserDetail extends StatefulWidget {
   final int? id;
   final String? name;
   final String? color;
-  // Future<UserData> fetchAlbum() async {
-  //   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
-  //   if (response.statusCode == 200) {
-  //     return UserData.fromJson(jsonDecode(response.body));
-  //   } else {
-  //     throw Exception(Strings.failed_to_load);
-  //   }
-  // }
-  const ProductDetail({Key? key, this.id, this.name, this.color}) : super(key: key);
+
+  const UserDetail({Key? key, this.id, this.name, this.color})
+      : super(key: key);
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState(id, name, color);
+  State<UserDetail> createState() => _UserDetailState(id, name, color);
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _UserDetailState extends State<UserDetail> {
   final int? id;
   final String? color;
   final String? name;
 
-  _ProductDetailState(this.id, this.name, this.color);
+  _UserDetailState(this.id, this.name, this.color);
 
   @override
   void initState() {
@@ -52,11 +41,11 @@ class _ProductDetailState extends State<ProductDetail> {
             SizedBox(
               height: 7,
             ),
-            Text("Name: $todoo"),
-            SizedBox(
-              height: 7,
-            ),
-            Text("color: $todooo"),
+            // Text("Name: $todoo"),
+            // SizedBox(
+            //   height: 7,
+            // ),
+            // Text("color: $todooo"),
           ],
         ),
       ),

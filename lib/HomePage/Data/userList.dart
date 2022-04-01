@@ -3,31 +3,34 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practical_harsh/HomePage/Data/userdetails.dart';
+import 'package:practical_harsh/HomePage/Data/userprofile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
 import '../../Model/UserData.dart';
-import '../../Model/product_detail.dart';
-import 'UserData.dart';
 
 
-Future<UserData> fetchAlbum() async {
+
+
+
+Future<ProductData> fetchAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
-    return UserData.fromJson(jsonDecode(response.body));
+    return ProductData.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Strings.failed_to_load);
   }
 }
 
-class ProductList extends StatefulWidget {
-  const ProductList({Key? key}) : super(key: key);
+class UserList extends StatefulWidget {
+  const UserList({Key? key}) : super(key: key);
 
   @override
-  _ProductListState createState() => _ProductListState();
+  _UserListState createState() => _UserListState();
 }
 
-class _ProductListState extends State<ProductList> {
-  late Future<UserData> futureAlbum;
+class _UserListState extends State<UserList> {
+  late Future<ProductData> futureAlbum;
 
 
   @override
@@ -44,7 +47,7 @@ class _ProductListState extends State<ProductList> {
         title: Text(Strings.fetch_data),
       ),
       body: Center(
-        child: FutureBuilder<UserData>(
+        child: FutureBuilder<ProductData>(
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -63,10 +66,11 @@ class _ProductListState extends State<ProductList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProductDetail(
+                              builder: (context) => UserDetail(
                                 id:snapshot.data!.data![index].id,
                                 color:snapshot.data!.data![index].color,
-                                name: snapshot.data!.data![index].name!.toString(),),
+                                name: snapshot.data!.data![index].name!.toString(),
+                            ),
                             ),
                           );
                         },

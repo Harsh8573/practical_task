@@ -3,15 +3,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practical_harsh/Model/product_profile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
 import 'UserData.dart';
 import 'product_detail.dart';
 
-Future<UserData> fetchAlbum() async {
+Future<ProductData> fetchAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
-    return UserData.fromJson(jsonDecode(response.body));
+    return ProductData.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Strings.failed_to_load);
   }
@@ -25,7 +26,7 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  late Future<UserData> futureAlbum;
+  late Future<ProductData> futureAlbum;
 
 
 @override
@@ -42,7 +43,7 @@ class _ProductListState extends State<ProductList> {
         title: Text(Strings.fetch_data),
       ),
       body: Center(
-        child: FutureBuilder<UserData>(
+        child: FutureBuilder<ProductData>(
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {

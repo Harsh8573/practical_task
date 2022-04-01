@@ -11,11 +11,11 @@ class ProductDetail extends StatefulWidget {
   final String? name;
   final String? color;
 
-  Future<UserData> fetchAlbum() async {
+  Future<ProductData> fetchAlbum() async {
     final response =
         await http.get(Uri.parse('https://reqres.in/api/unknown'));
     if (response.statusCode == 200) {
-      return UserData.fromJson(jsonDecode(response.body));
+      return ProductData.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(Strings.failed_to_load);
     }

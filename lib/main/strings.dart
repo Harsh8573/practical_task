@@ -55,12 +55,15 @@ class Strings {
   static const String example_title = 'Example title';
   static const String hello_word = 'Hello, world!';
   static const String myapp = 'My app';
-  static const String tabbar = "TabBar";
+  static const String tabbar = "Tab Bar";
   static const String pass_data = "Pass Data";
-  static const String pass_apidata = "apidata";
+  static const String pass_apidata = "Api data";
+  static const String homescreen = "Home Screen";
 
   static const String data = "Data";
   static const String tabs = "Tabs";
+  static const String api = "Api";
+  static const String home = "Home";
   static const String get_method = "getMethod";
 
  //Tabbar

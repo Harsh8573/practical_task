@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../main/strings.dart';
 import 'UserData.dart';
 
-class ProductDetail extends StatefulWidget {
+class ProductProfile extends StatefulWidget {
   final int? id;
   final String? name;
   final String? color;
@@ -17,18 +17,18 @@ class ProductDetail extends StatefulWidget {
       throw Exception(Strings.failed_to_load);
     }
   }
-  const ProductDetail({Key? key, this.id, this.name, this.color}) : super(key: key);
+  const ProductProfile({Key? key, this.id, this.name, this.color}) : super(key: key);
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState(id, name, color);
+  State<ProductProfile> createState() => _ProductProfileState(id, name, color);
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _ProductProfileState extends State<ProductProfile> {
   final int? id;
   final String? color;
   final String? name;
 
-  _ProductDetailState(this.id, this.name, this.color);
+  _ProductProfileState(this.id, this.name, this.color);
 
   @override
   void initState() {
@@ -52,11 +52,11 @@ class _ProductDetailState extends State<ProductDetail> {
             SizedBox(
               height: 7,
             ),
-            // Text("Name: $todoo"),
-            // SizedBox(
-            //   height: 7,
-            // ),
-            // Text("color: $todooo"),
+            Text("Name: $todoo"),
+            SizedBox(
+              height: 7,
+            ),
+            Text("color: $todooo"),
           ],
         ),
       ),

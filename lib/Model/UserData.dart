@@ -5,8 +5,8 @@
 /// data : [{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","pantone_value":"15-4020"},{"id":2,"name":"fuchsia rose","year":2001,"color":"#C74375","pantone_value":"17-2031"},{"id":3,"name":"true red","year":2002,"color":"#BF1932","pantone_value":"19-1664"},{"id":4,"name":"aqua sky","year":2003,"color":"#7BC4C4","pantone_value":"14-4811"},{"id":5,"name":"tigerlily","year":2004,"color":"#E2583E","pantone_value":"17-1456"},{"id":6,"name":"blue turquoise","year":2005,"color":"#53B0AE","pantone_value":"15-5217"}]
 /// support : {"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}
 
-class UserData {
-  UserData({
+class ProductData {
+  ProductData({
     int? page,
     int? perPage,
     int? total,
@@ -22,7 +22,7 @@ class UserData {
     _support = support;
   }
 
-  UserData.fromJson(dynamic json) {
+  ProductData.fromJson(dynamic json) {
     _page = json['page'];
     _perPage = json['per_page'];
     _total = json['total'];
@@ -44,7 +44,7 @@ class UserData {
   List<Data>? _data;
   Support? _support;
 
-  UserData copyWith({
+  ProductData copyWith({
     int? page,
     int? perPage,
     int? total,
@@ -52,7 +52,7 @@ class UserData {
     List<Data>? data,
     Support? support,
   }) =>
-      UserData(
+      ProductData(
         page: page ?? _page,
         perPage: perPage ?? _perPage,
         total: total ?? _total,

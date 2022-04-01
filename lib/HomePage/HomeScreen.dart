@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Model/product_list.dart';
 import 'Data/DataScreen.dart';
+import 'Data/userList.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ListTile(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProductList()));
+                      MaterialPageRoute(builder: (context) => UserList()));
                 },
                 title: Text(
                   "Data",
@@ -88,20 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 leading: Icon(
                   Icons.add_link,
-                  size: 30,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => DataScreen()));
-                },
-                title: Text(
-                  "Login",
-                  style: TextStyle(fontSize: 20),
-                ),
-                leading: Icon(
-                  Icons.login,
                   size: 30,
                 ),
               ),
@@ -130,6 +117,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 leading: Icon(
                   Icons.account_balance_wallet_outlined,
+                  size: 30,
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DataScreen()));
+                },
+                title: Text(
+                  "Logout",
+                  style: TextStyle(fontSize: 20),
+                ),
+                leading: Icon(
+                  Icons.login,
                   size: 30,
                 ),
               ),

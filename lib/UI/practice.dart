@@ -10,9 +10,10 @@ import 'package:practical_harsh/UI/subscribtion.dart';
 import 'package:practical_harsh/UI/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
+import '../HomePage/Data/userList.dart';
 import '../HomePage/HomeScreen.dart';
 import '../api/passdata.dart';
-import '../extra/pass_data.dart';
+
 import '../main/const.dart';
 import '../post/postdata.dart';
 import 'image_picker.dart';
@@ -72,6 +73,8 @@ class _practiceState extends State<practice> {
 
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          // leading: Icon(Icons.account_balance),
           title: const Text(Strings.registration_form),
         ),
         body: SafeArea(
@@ -85,6 +88,28 @@ class _practiceState extends State<practice> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                            },
+                            child: Container(
+                              child: Row(
+                                children: [Icon(Icons.account_balance),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text('Home',style: TextStyle(
+                                      fontWeight: FontWeight.bold
+                                  ),)],
+                              ),
+                            ),
+                          ),
+
+                        ],
+                      ),
                       Container(
                         child: Image.asset(Strings.login_image),
                       ),
@@ -326,7 +351,7 @@ class _practiceState extends State<practice> {
                 ),
               ),applyMarginTop(height: 6),
               Container(
-                color: Colors.grey[200],
+                color: Colors.lightGreenAccent,
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -343,7 +368,7 @@ class _practiceState extends State<practice> {
               ),
               applyMarginTop(height: 6),
               Container(
-                color: Colors.purple[200],
+                color: Colors.blue[200],
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -358,26 +383,26 @@ class _practiceState extends State<practice> {
                   // enabled: false
                 ),
               ),applyMarginTop(height: 6),
-              Container(
-                color: Colors.orangeAccent[200],
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Detail()),
-                    );
-                  },
-                  title: Text(Strings.pass_data),
-                  leading: Icon(Icons.amp_stories_rounded),
-                  trailing: Icon(Icons.arrow_forward),
-                  subtitle: Text(Strings.tabs),
-                  dense: true,
-                  // enabled: false
-                ),
-              ),
+              // Container(
+              //   color: Colors.orangeAccent[200],
+              //   child: ListTile(
+              //     onTap: () {
+              //       Navigator.of(context).push(
+              //         MaterialPageRoute(builder: (context) => UserList()),
+              //       );
+              //     },
+              //     title: Text(Strings.pass_data),
+              //     leading: Icon(Icons.amp_stories_rounded),
+              //     trailing: Icon(Icons.arrow_forward),
+              //     subtitle: Text(Strings.tabs),
+              //     dense: true,
+              //     // enabled: false
+              //   ),
+              // ),
 
               applyMarginTop(height: 6),
               Container(
-                color: Colors.blueGrey[200],
+                color: Colors.pink[200],
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -387,23 +412,23 @@ class _practiceState extends State<practice> {
                   title: Text(Strings.pass_apidata),
                   leading: Icon(Icons.amp_stories_rounded),
                   trailing: Icon(Icons.arrow_forward),
-                  subtitle: Text(Strings.tabs),
+                  subtitle: Text(Strings.api),
                   dense: true,
                   // enabled: false
                 ),
               ),    applyMarginTop(height: 6),
               Container(
-                color: Colors.blueGrey[200],
+                color: Colors.indigoAccent[100],
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => HomeScreen()),
                     );
                   },
-                  title: Text(Strings.pass_apidata),
+                  title: Text(Strings.homescreen),
                   leading: Icon(Icons.amp_stories_rounded),
                   trailing: Icon(Icons.arrow_forward),
-                  subtitle: Text(Strings.tabs),
+                  subtitle: Text(Strings.home),
                   dense: true,
                   // enabled: false
                 ),

@@ -2,33 +2,35 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../main/strings.dart';
+
+import '../../Model/UserData.dart';
+import '../../main/strings.dart';
 import 'UserData.dart';
 
-class ProductDetail extends StatefulWidget {
+class UserProfile extends StatefulWidget {
   final int? id;
   final String? name;
   final String? color;
   Future<ProductData> fetchAlbum() async {
-    final response = await http.get(Uri.parse('https://reqres.in/api/unknown ${id}'));
+    final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
     if (response.statusCode == 200) {
       return ProductData.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(Strings.failed_to_load);
     }
   }
-  const ProductDetail({Key? key, this.id, this.name, this.color}) : super(key: key);
+  const UserProfile({Key? key, this.id, this.name, this.color}) : super(key: key);
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState(id, name, color);
+  State<UserProfile> createState() => _UserProfileState(id, name, color);
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _UserProfileState extends State<UserProfile> {
   final int? id;
   final String? color;
   final String? name;
 
-  _ProductDetailState(this.id, this.name, this.color);
+  _UserProfileState(this.id, this.name, this.color);
 
   @override
   void initState() {
