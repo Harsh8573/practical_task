@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:practical_harsh/screen/practice/pageview.dart';
 import 'package:practical_harsh/main/strings.dart';
 import 'package:practical_harsh/screen/practice/subscribtion.dart';
-import 'package:practical_harsh/screen/practice/tabbar.dart';
+import 'package:practical_harsh/screen/practice/tab_bar.dart';
 import '../homescreen/home_screen.dart';
 import '../../main/const.dart';
 import 'image_picker.dart';
@@ -374,24 +374,6 @@ class _practiceState extends State<practice> {
                   // enabled: false
                 ),
               ),applyMarginTop(height: 6),
-              // Container(
-              //   color: Colors.orangeAccent[200],
-              //   child: ListTile(
-              //     onTap: () {
-              //       Navigator.of(context).push(
-              //         MaterialPageRoute(builder: (context) => UserList()),
-              //       );
-              //     },
-              //     title: Text(Strings.pass_data),
-              //     leading: Icon(Icons.amp_stories_rounded),
-              //     trailing: Icon(Icons.arrow_forward),
-              //     subtitle: Text(Strings.tabs),
-              //     dense: true,
-              //     // enabled: false
-              //   ),
-              // ),
-
-              applyMarginTop(height: 6),
 
               Container(
                 color: Colors.indigoAccent[100],
@@ -410,22 +392,7 @@ class _practiceState extends State<practice> {
                 ),
               ),
               applyMarginTop(height: 6),
-              // Container(
-              //   color: Colors.blueGrey[200],
-              //   child: ListTile(
-              //     onTap: () {
-              //       Navigator.of(context).push(
-              //         MaterialPageRoute(builder: (context) => PostData()),
-              //       );
-              //     },
-              //     title: Text(Strings.pass_apidata),
-              //     leading: Icon(Icons.amp_stories_rounded),
-              //     trailing: Icon(Icons.arrow_forward),
-              //     subtitle: Text(Strings.tabs),
-              //     dense: true,
-              //     // enabled: false
-              //   ),
-              // ),
+
             ],
           )),
         ));

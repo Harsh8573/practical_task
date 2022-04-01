@@ -24,6 +24,7 @@ class _pageviewState extends State<pageview> {
   Widget build(BuildContext context) {
     return PageView.builder(
        controller:_controller,
+      itemCount: 2,
       scrollDirection: Axis.horizontal, itemBuilder: (BuildContext context, int index) {  return Container(
       color: Colors.blue,
       child: Center(
