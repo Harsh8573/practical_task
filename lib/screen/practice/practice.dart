@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,18 +6,11 @@ import 'package:practical_harsh/screen/practice/pageview.dart';
 import 'package:practical_harsh/main/strings.dart';
 import 'package:practical_harsh/screen/practice/subscribtion.dart';
 import 'package:practical_harsh/screen/practice/tabbar.dart';
-
-// import ‘package:fluttertoast/fluttertoast.dart’;
-import '../getdata/user_list.dart';
 import '../homescreen/home_screen.dart';
-import '../../api/passdata.dart';
-
 import '../../main/const.dart';
-import '../postdata/post_data.dart';
 import 'image_picker.dart';
-import '../../main/main.dart';
 import '../../extra/getdataa/product_list.dart';
-// import 'package:flutter_background_service/flutter_background_service.dart';
+
 
 class practice extends StatefulWidget {
   @override
@@ -40,7 +31,7 @@ class _practiceState extends State<practice> {
   DateTime? selectedDate;
   TextEditingController dateinput = TextEditingController();
 
-  //text editing controller for text field
+
   @override
   void initState() {
     dateinput.text = ""; //set the initial value of text field
@@ -401,22 +392,7 @@ class _practiceState extends State<practice> {
               // ),
 
               applyMarginTop(height: 6),
-              Container(
-                color: Colors.pink[200],
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProductListapi()),
-                    );
-                  },
-                  title: Text(Strings.pass_apidata),
-                  leading: Icon(Icons.amp_stories_rounded),
-                  trailing: Icon(Icons.arrow_forward),
-                  subtitle: Text(Strings.api),
-                  dense: true,
-                  // enabled: false
-                ),
-              ),    applyMarginTop(height: 6),
+
               Container(
                 color: Colors.indigoAccent[100],
                 child: ListTile(
