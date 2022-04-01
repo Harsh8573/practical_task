@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/UI/practice.dart';
+import 'package:practical_harsh/screen/practice/practice.dart';
 
 void main() {
   // ignore: prefer_const_constructors

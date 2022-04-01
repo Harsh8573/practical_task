@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practical_harsh/UI/bell.dart';
+import 'package:practical_harsh/screen/practice/bell.dart';
 import 'package:practical_harsh/main/strings.dart';
 
 class subscribtion extends StatefulWidget {

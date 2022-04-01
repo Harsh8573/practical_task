@@ -2,38 +2,33 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../../main/strings.dart';
+import 'Product_Data.dart';
 
-import '../main/strings.dart';
-import '../Model/Product_Data.dart';
-
-class ProductDetail extends StatefulWidget {
+class ProductProfile extends StatefulWidget {
   final int? id;
   final String? name;
   final String? color;
-
   Future<ProductData> fetchAlbum() async {
-    final response =
-        await http.get(Uri.parse('https://reqres.in/api/unknown'));
+    final response = await http.get(Uri.parse('https://reqres.in/api/unknown ${id}'));
     if (response.statusCode == 200) {
       return ProductData.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(Strings.failed_to_load);
     }
   }
-
-  const ProductDetail({Key? key, this.id, this.name, this.color})
-      : super(key: key);
+  const ProductProfile({Key? key, this.id, this.name, this.color}) : super(key: key);
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState(id, name, color);
+  State<ProductProfile> createState() => _ProductProfileState(id, name, color);
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _ProductProfileState extends State<ProductProfile> {
   final int? id;
   final String? color;
   final String? name;
 
-  _ProductDetailState(this.id, this.name, this.color);
+  _ProductProfileState(this.id, this.name, this.color);
 
   @override
   void initState() {
@@ -68,4 +63,6 @@ class _ProductDetailState extends State<ProductDetail> {
     );
   }
 }
-
+// Widget Text(){
+//   return Style
+// }

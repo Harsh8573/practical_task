@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../Model/product_list.dart';
-import 'Data/DataScreen.dart';
-import 'Data/userList.dart';
+import '../../extra/getdataa/product_list.dart';
+import 'data_screen.dart';
+import '../getdata/user_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

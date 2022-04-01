@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:practical_harsh/UI/pageview.dart';
+import 'package:practical_harsh/screen/practice/pageview.dart';
 import 'package:practical_harsh/main/strings.dart';
-import 'package:practical_harsh/UI/subscribtion.dart';
-import 'package:practical_harsh/UI/tabbar.dart';
+import 'package:practical_harsh/screen/practice/subscribtion.dart';
+import 'package:practical_harsh/screen/practice/tabbar.dart';
 
 // import ‘package:fluttertoast/fluttertoast.dart’;
-import '../HomePage/Data/userList.dart';
-import '../HomePage/HomeScreen.dart';
-import '../api/passdata.dart';
+import '../getdata/user_list.dart';
+import '../homescreen/home_screen.dart';
+import '../../api/passdata.dart';
 
-import '../main/const.dart';
-import '../post/postdata.dart';
+import '../../main/const.dart';
+import '../postdata/post_data.dart';
 import 'image_picker.dart';
-import '../main/main.dart';
-import '../Model/product_list.dart';
+import '../../main/main.dart';
+import '../../extra/getdataa/product_list.dart';
 // import 'package:flutter_background_service/flutter_background_service.dart';
 
 class practice extends StatefulWidget {

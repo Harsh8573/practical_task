@@ -3,71 +3,62 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practical_harsh/screen/getdata/user_details.dart';
+import 'package:practical_harsh/screen/getdata/user_profile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
-import '../Model/Product_Data.dart';
-import 'apidata.dart';
-import '../Model/product_detail.dart';
+import '../../extra/getdataa/Product_Data.dart';
 
-Future<Apidata> fetchapi() async {
-  // final slug = 'govadiyo';
-  // final url = Uri.encodeFull('https://reqres.in/api/unknown/${slug}');
-  // print(url);
-  final response = await http.get(Uri.parse('https://reqres.in/api/unknown/3'));
+
+
+
+
+Future<ProductData> userAlbum() async {
+  final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
-    return Apidata.fromJson(jsonDecode(response.body));
+    return ProductData.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Strings.failed_to_load);
   }
 }
 
-class ProductListapi extends StatefulWidget {
-  const ProductListapi({Key? key}) : super(key: key);
+class UserList extends StatefulWidget {
+  const UserList({Key? key}) : super(key: key);
 
   @override
-  _ProductListapiState createState() => _ProductListapiState();
+  _UserListState createState() => _UserListState();
 }
 
-class _ProductListapiState extends State<ProductListapi> {
-  late Future<Apidata> futureAlbum;
+class _UserListState extends State<UserList> {
+  late Future<ProductData> futureAlbum;
+
 
   @override
   void initState() {
-    super.initState();
-    futureAlbum = fetchapi();
-  }
 
+    super.initState();
+    futureAlbum = userAlbum();
+  }
   @override
   Widget build(BuildContext context) {
-    final addpath = 'harsh';
-    final url = Uri.encodeFull('https://runknown/${addpath}');
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(url),
+        title: Text(Strings.fetch_data),
       ),
       body: Center(
-        child: FutureBuilder<Apidata>(
+        child: FutureBuilder<ProductData>(
           future: futureAlbum,
           builder: (context, snapshot) {
-
-            // final users = snapshot.data?.data?.id.toString();
-            //   // var i ="";
-            // final List<String> descrip = [];
-            // for(var i = 0;i < users; i++){
-            //
-            //   descrip.add(users!);
-            // }
             if (snapshot.hasData) {
               return Container(
                 child: ListView.builder(
-                  itemCount: 1,
-                  // snapshot.data == null ? 0 : snapshot.data?.data?.length,
+                  itemCount:
+                  snapshot.data == null ? 0 : snapshot.data?.data?.length,
                   itemBuilder: (context, index) {
-                    // var color = "0xFF" +
-                    //     snapshot.data!.data![index].color!.substring(1, 7);
-                    // var value = Color(int.parse(color));
+                    var color = "0xFF" +
+                        snapshot.data!.data![index].color!.substring(1, 7);
+                    var value = Color(int.parse(color));
                     return Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: GestureDetector(
@@ -75,30 +66,30 @@ class _ProductListapiState extends State<ProductListapi> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProductDetail(
-                                id:snapshot.data!.data!.id,
-                                color:snapshot.data!.data!.color,
-                                name: snapshot.data!.data!.name!.toString(),
-                              ),
+                              builder: (context) => UserProfile(
+                                id:snapshot.data!.data![index].id,
+                                color:snapshot.data!.data![index].color.toString(),
+                                name: snapshot.data!.data![index].name!.toString(),
+                            ),
                             ),
                           );
                         },
                         child: Card(
                             child: ListTile(
-                              leading: Text(snapshot.data!.data!.id.toString()),
-                              title: Text(snapshot.data!.data!.name!.toString()),
+                              leading: Text(snapshot.data!.data![index].id.toString()),
+                              title: Text(snapshot.data!.data![index].name!.toString()),
                               subtitle: Text(
-                                snapshot.data!.data!.year!.toString(),
+                                snapshot.data!.data![index].year!.toString(),
                               ),
                               trailing: Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: Container(
                                   height: 60,
                                   width: 75,
-                                  // color: value,
+                                  color: value,
                                   child: Center(
                                     child: Text(
-                                      '${snapshot.data!.data!.color?.substring(1, 7)}',
+                                      '${snapshot.data!.data![index].color?.substring(1, 7)}',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13),

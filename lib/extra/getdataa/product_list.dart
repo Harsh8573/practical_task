@@ -3,17 +3,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:practical_harsh/HomePage/Data/userdetails.dart';
-import 'package:practical_harsh/HomePage/Data/userprofile.dart';
+import 'package:practical_harsh/extra/getdataa/product_profile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
-import '../../Model/Product_Data.dart';
+import 'Product_Data.dart';
+import 'product_detail.dart';
 
-
-
-
-
-Future<ProductData> userAlbum() async {
+Future<ProductData> fetchAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
     return ProductData.fromJson(jsonDecode(response.body));
@@ -22,22 +18,22 @@ Future<ProductData> userAlbum() async {
   }
 }
 
-class UserList extends StatefulWidget {
-  const UserList({Key? key}) : super(key: key);
+class ProductList extends StatefulWidget {
+  const ProductList({Key? key}) : super(key: key);
 
   @override
-  _UserListState createState() => _UserListState();
+  _ProductListState createState() => _ProductListState();
 }
 
-class _UserListState extends State<UserList> {
+class _ProductListState extends State<ProductList> {
   late Future<ProductData> futureAlbum;
 
 
-  @override
+@override
   void initState() {
 
     super.initState();
-    futureAlbum = userAlbum();
+    futureAlbum = fetchAlbum();
   }
   @override
   Widget build(BuildContext context) {
@@ -54,7 +50,7 @@ class _UserListState extends State<UserList> {
               return Container(
                 child: ListView.builder(
                   itemCount:
-                  snapshot.data == null ? 0 : snapshot.data?.data?.length,
+                      snapshot.data == null ? 0 : snapshot.data?.data?.length,
                   itemBuilder: (context, index) {
                     var color = "0xFF" +
                         snapshot.data!.data![index].color!.substring(1, 7);
@@ -66,40 +62,39 @@ class _UserListState extends State<UserList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => UserProfile(
+                              builder: (context) => ProductDetail(
                                 id:snapshot.data!.data![index].id,
-                                // color:snapshot.data!.data![index].color,
-                                // name: snapshot.data!.data![index].name!.toString(),
-                            ),
+                                color:snapshot.data!.data![index].color,
+                                name: snapshot.data!.data![index].name!.toString(),),
                             ),
                           );
                         },
                         child: Card(
                             child: ListTile(
-                              leading: Text(snapshot.data!.data![index].id.toString()),
-                              title: Text(snapshot.data!.data![index].name!.toString()),
-                              subtitle: Text(
-                                snapshot.data!.data![index].year!.toString(),
-                              ),
-                              trailing: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Container(
-                                  height: 60,
-                                  width: 75,
-                                  color: value,
-                                  child: Center(
-                                    child: Text(
-                                      '${snapshot.data!.data![index].color?.substring(1, 7)}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13),
-                                    ),
-                                  ),
+                          leading: Text(snapshot.data!.data![index].id.toString()),
+                          title: Text(snapshot.data!.data![index].name!.toString()),
+                          subtitle: Text(
+                            snapshot.data!.data![index].year!.toString(),
+                          ),
+                          trailing: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Container(
+                              height: 60,
+                              width: 75,
+                              color: value,
+                              child: Center(
+                                child: Text(
+                                  '${snapshot.data!.data![index].color?.substring(1, 7)}',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
                                 ),
                               ),
-                              isThreeLine: true,
-                              dense: false,
-                            )),
+                            ),
+                          ),
+                          isThreeLine: true,
+                          dense: false,
+                        )),
                       ),
                     );
                   },
