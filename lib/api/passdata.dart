@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:practical_harsh/main/strings.dart';
 
-import '../Model/UserData.dart';
+import '../Model/Product_Data.dart';
 import 'apidata.dart';
 import '../Model/product_detail.dart';
 

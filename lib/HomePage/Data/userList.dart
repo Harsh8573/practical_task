@@ -7,13 +7,13 @@ import 'package:practical_harsh/HomePage/Data/userdetails.dart';
 import 'package:practical_harsh/HomePage/Data/userprofile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
-import '../../Model/UserData.dart';
+import '../../Model/Product_Data.dart';
 
 
 
 
 
-Future<ProductData> fetchAlbum() async {
+Future<ProductData> userAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
     return ProductData.fromJson(jsonDecode(response.body));
@@ -37,7 +37,7 @@ class _UserListState extends State<UserList> {
   void initState() {
 
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureAlbum = userAlbum();
   }
   @override
   Widget build(BuildContext context) {
@@ -66,10 +66,10 @@ class _UserListState extends State<UserList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => UserDetail(
+                              builder: (context) => UserProfile(
                                 id:snapshot.data!.data![index].id,
-                                color:snapshot.data!.data![index].color,
-                                name: snapshot.data!.data![index].name!.toString(),
+                                // color:snapshot.data!.data![index].color,
+                                // name: snapshot.data!.data![index].name!.toString(),
                             ),
                             ),
                           );

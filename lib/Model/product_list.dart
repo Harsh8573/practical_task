@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:practical_harsh/Model/product_profile.dart';
 import 'package:practical_harsh/main/strings.dart';
 
-import 'UserData.dart';
+import 'Product_Data.dart';
 import 'product_detail.dart';
 
 Future<ProductData> fetchAlbum() async {
