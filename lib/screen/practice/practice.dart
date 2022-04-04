@@ -291,7 +291,9 @@ class _practiceState extends State<practice> {
           child: SafeArea(
               child: ListView(
             children: [
-
+              Container(
+                child: Image.asset("image/flutter.png"),
+              ),
               Container(
                 color: Colors.green,
                 child: ListTile(
@@ -308,23 +310,23 @@ class _practiceState extends State<practice> {
                 ),
               ),
               applyMarginTop(height: 6),
-              Container(
-                color: Colors.yellow[400],
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => subscribtion()),
-                    );
-                  },
-                  title: Text(Strings.subscription),
-                  leading: Icon(Icons.add_comment_outlined),
-                  trailing: Icon(Icons.list),
-                  subtitle: Text(Strings.by_page),
-                  dense: true,
-                  // enabled: false
-                ),
-              ),
-              applyMarginTop(height: 6),
+              // Container(
+              //   color: Colors.yellow[400],
+              //   child: ListTile(
+              //     onTap: () {
+              //       Navigator.of(context).push(
+              //         MaterialPageRoute(builder: (context) => subscribtion()),
+              //       );
+              //     },
+              //     title: Text(Strings.subscription),
+              //     leading: Icon(Icons.add_comment_outlined),
+              //     trailing: Icon(Icons.list),
+              //     subtitle: Text(Strings.by_page),
+              //     dense: true,
+              //     // enabled: false
+              //   ),
+              // ),
+              // applyMarginTop(height: 6),
               Container(
                 color: Colors.red[300],
                 child: ListTile(

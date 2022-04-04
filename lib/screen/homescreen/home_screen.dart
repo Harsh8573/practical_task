@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(builder: (context) => PostMethod()));
               },
               title: Text(
-                "Post",
+                "PostMethod",
                 style: TextStyle(fontSize: 20),
               ),
               leading: Icon(
@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(builder: (context) => DataScreen()));
               },
               title: Text(
-                "Post method",
+                "Post",
                 style: TextStyle(fontSize: 20),
               ),
               leading: Icon(
