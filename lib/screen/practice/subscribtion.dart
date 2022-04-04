@@ -14,36 +14,33 @@ class _subscribtionState extends State<subscribtion> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Align(
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                child: Image.asset(
-                  Strings.image_layout,
-                ),
+        child: Stack(
+          children: [
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              child: Image.asset(
+                Strings.image_layout,
               ),
-              Positioned(
-                bottom: 420,
-                right: 135,
-                child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => bell()));
-                    },
-                    child: Text(
-                      Strings.subscribe,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.red[900]),
-                    )),
-              )
-              // FlatButton(
-              //     color: Colors.red[600],
-              //     onPressed: (){}, child: Text('Subscribe'))
-            ],
-          ),
+            ),
+            Positioned(
+              bottom: 420,
+              right: 135,
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => bell()));
+                  },
+                  child: Text(
+                    Strings.subscribe,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red[900]),
+                  )),
+            )
+            // FlatButton(
+            //     color: Colors.red[600],
+            //     onPressed: (){}, child: Text('Subscribe'))
+          ],
         ),
       ),
     );

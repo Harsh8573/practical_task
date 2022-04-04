@@ -29,7 +29,7 @@ class _bellState extends State<bell> {
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Image.asset(Strings.login_image),
+                  child: Image.asset("image/login.png"),
                 ),
               ),
               Positioned(

@@ -102,7 +102,7 @@ class _practiceState extends State<practice> {
                         ],
                       ),
                       Container(
-                        child: Image.asset(Strings.login_image),
+                        child: Image.asset("image/login.png"),
                       ),
                       Text(
                         Strings.enter_name,

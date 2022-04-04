@@ -9,7 +9,7 @@ class Strings {
   static const String gujrati = "gujrati";
   static const String english = "English";
   static const String registration_form = "Registration Form";
-  static const String enter_name = "Enter Name";
+  static const String enter_name = "Ent Name";
   static const String please_enter_your_name = "Please Enter Your Name";
   static const String select_gender = "Select Gender";
   static const String male = "Male";
@@ -29,7 +29,7 @@ class Strings {
   static const String image = "IMAGE";
   static const String picker = "Picker";
   static const String ok = "OK";
-  static const String login_image = "image/login.png";
+  // static const String login_image = "image/login.png";
   static const String alert = "Alert";
   static const String select_language_alert = "Please select Language";
 

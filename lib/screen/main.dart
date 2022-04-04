@@ -7,14 +7,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
   // final ThemeData theme = ThemeData();
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+        primaryColor: Colors.orangeAccent[400],
+        appBarTheme: AppBarTheme(
+          elevation: 0.0
+        )
+      ),
+      home: practice(),
       // theme: theme.copyWith(
       //   colorScheme: theme.colorScheme
       //       .copyWith(primary: Colors.orangeAccent, secondary: Colors.green),
@@ -26,7 +34,6 @@ class MyApp extends StatelessWidget {
       //   )
       // ),
       // ignore: prefer_const_constructors
-      home: practice(),
     );
   }
 }

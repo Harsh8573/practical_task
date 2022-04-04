@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../extra/getdataa/product_list.dart';
+import '../../extra/getdataa/post_method.dart';
+import '../getdata/user_list.dart';
 import '../postdata/post_data.dart';
 import 'data_screen.dart';
-import '../getdata/user_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,14 +15,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suffle",style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold
-        ),),
+        backgroundColor: Colors.orangeAccent,
+        centerTitle: true,
+        title: Text(
+          "Suffle",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -44,27 +47,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                      hintText: "Enter email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                      hintText: "Enter email",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
                 ),
                 applyMarginTop(height: 25.0),
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                      hintText: "Password", border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30)
-                  )),
+                      hintText: "Password",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
                 ),
                 applyMarginTop(height: 25.0),
                 ElevatedButton(onPressed: () {}, child: Text("Login")),
-
                 TextButton(
-                  onPressed: () {  },
-                  child: Text("Forgot Password??",style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.blue[500]
-                  ),),
-                  )
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.cyan[500]),
+                  ),
+                )
               ],
             ),
           ),
@@ -72,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,
-        backgroundColor: Colors.black26,
+        backgroundColor: Colors.greenAccent[400],
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -114,8 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserList()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => UserList()));
               },
               title: Text(
                 "Data",
@@ -129,10 +135,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PostScreen()));
+                    MaterialPageRoute(builder: (context) => PostMethod()));
               },
               title: Text(
-                "Setting",
+                "Post",
                 style: TextStyle(fontSize: 20),
               ),
               leading: Icon(
@@ -146,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(builder: (context) => DataScreen()));
               },
               title: Text(
-                "Privacy Policy",
+                "Post method",
                 style: TextStyle(fontSize: 20),
               ),
               leading: Icon(
@@ -157,10 +163,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => DataScreen()));
+                    MaterialPageRoute(builder: (context) => PostScreen()));
               },
               title: Text(
-                "Logout",
+                "Login",
                 style: TextStyle(fontSize: 20),
               ),
               leading: Icon(
@@ -174,7 +180,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-Widget applyMarginTop({ double height = 12.0, double width = 12}) {
+
+Widget applyMarginTop({double height = 12.0, double width = 12}) {
   return SizedBox(
     height: height,
     width: width,

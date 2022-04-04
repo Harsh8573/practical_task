@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class PostScreen extends StatefulWidget {
-  const PostScreen({Key? key}) : super(key: key);
-
   @override
-  State<PostScreen> createState() => _PostScreenState();
+  _PostScreenState createState() => _PostScreenState();
 }
 
-// Future<Postmodel> submitdata(int userid,int id,String title)async{
-//
-//   var response = await http.post(Uri.parse("https://jsonplaceholder.typicode.com/albums"),
-//   body: {"userid": userid, "id": id, "title": title} );
-//   var data = response.body;
-//   print(data);
-//   if(response.statusCode==201){
-//     String responseString = response.body;
-//     // Pos
-//   }
-// }
 class _PostScreenState extends State<PostScreen> {
-  final url = "https://reqres.in/api/login";
-
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    // final url1 = "https://reqres.in/api/login";
+    final url = "https://jsonplaceholder.typicode.com/posts";
+
+    void postdata() async {
+
+        final response = await post(Uri.parse(url),
+            body: {"title": "anything", "body": "post body", "userid": "1"});
+        // var data = response.body;
+        print(response.body);
+
+    }
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -35,7 +30,7 @@ class _PostScreenState extends State<PostScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
-                  controller: emailController,
+                  // controller: emailController,
                   decoration: InputDecoration(
                       hintText: "Enter email", border: OutlineInputBorder()),
                 ),
@@ -49,12 +44,7 @@ class _PostScreenState extends State<PostScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(onPressed: () {}, child: Text("Press"))
-                  ],
-                )
+                ElevatedButton(onPressed: postdata, child: Text("send Post"))
               ],
             ),
           ),
