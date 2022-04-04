@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../extra/getdataa/post_method.dart';
 import '../getdata/user_list.dart';
-import '../postdata/post_data.dart';
+import '../postdata/PostScreen.dart';
 import 'data_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => DataScreen()));
+                    MaterialPageRoute(builder: (context) => PostScreen()));
               },
               title: Text(
                 "Post",
