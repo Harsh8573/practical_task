@@ -160,20 +160,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 size: 30,
               ),
             ),
-            ListTile(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PostScreen()));
-              },
-              title: Text(
-                "Login",
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: Icon(
-                Icons.login,
-                size: 30,
-              ),
-            ),
+            // ListTile(
+            //   onTap: () {
+            //     Navigator.of(context).push(
+            //         MaterialPageRoute(builder: (context) => PostScreen()));
+            //   },
+            //   title: Text(
+            //     "Login",
+            //     style: TextStyle(fontSize: 20),
+            //   ),
+            //   leading: Icon(
+            //     Icons.login,
+            //     size: 30,
+            //   ),
+            // ),
           ],
         ),
       ),

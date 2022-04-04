@@ -4,7 +4,6 @@ import 'dart:convert';
 /// support : {"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}
 
 UserData userDataFromJson(String str) => UserData.fromJson(json.decode(str));
-
 String userDataToJson(UserData data) => json.encode(data.toJson());
 
 class UserData {

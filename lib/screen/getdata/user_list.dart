@@ -8,7 +8,7 @@ import 'package:practical_harsh/screen/getdata/user_profile.dart';
 
 import '../../extra/getdataa/Product_Data.dart';
 
-Future<ProductData> userAlbum() async {
+Future<ProductData> getAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
     return ProductData.fromJson(jsonDecode(response.body));
@@ -30,7 +30,7 @@ class _UserListState extends State<UserList> {
   @override
   void initState() {
     super.initState();
-    futureAlbum = userAlbum();
+    futureAlbum = getAlbum();
   }
 
   @override

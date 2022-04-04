@@ -82,7 +82,7 @@ class Strings {
 
 
 
-
+  static const String invalid_email = "Invalid Email-id";
 
 
 
