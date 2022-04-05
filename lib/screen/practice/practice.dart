@@ -8,6 +8,7 @@ import 'package:practical_harsh/screen/practice/subscribtion.dart';
 import 'package:practical_harsh/screen/practice/tab_bar.dart';
 import '../homescreen/home_screen.dart';
 import '../../main/const.dart';
+import '../postdata/PostScreen.dart';
 import 'image_picker.dart';
 import '../../extra/getdataa/product_list.dart';
 
@@ -88,18 +89,41 @@ class _practiceState extends State<practice> {
                             },
                             child: Container(
                               child: Row(
-                                children: [Icon(Icons.account_balance),
+                                children: [Icon(Icons.home),
                                   SizedBox(
                                     width: 5,
                                   ),
                                   Text('Home',style: TextStyle(
                                       fontWeight: FontWeight.bold
-                                  ),)],
+                                  ),),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PostScreen()));
+                                  },
+                                  child: Container(
+                                    child: Row(
+                                      children: [Icon(Icons.account_box),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text('Login',style: TextStyle(
+                                            fontWeight: FontWeight.bold
+                                        ),)],
+                                    ),
+                                  ),
+                                )
+                                  ],
                               ),
                             ),
                           ),
 
                         ],
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Container(
                         child: Image.asset("image/login.png"),

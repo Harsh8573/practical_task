@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-// import 'package:email_validator/email_validator.dart';
-import '../../main/strings.dart';
+import '../postdata/PostData.dart';
 import 'PostData.dart';
 
 class PostScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ Future<PostData> postAlbum(String email, String password) async {
   }
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _PostScreenState extends State<PostScreen>{
   PostData? _post;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -38,10 +37,9 @@ class _PostScreenState extends State<PostScreen> {
   Widget build(BuildContext context) {
     // var width = MediaQuery.of(context).size.width;
     final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    new GlobalKey<ScaffoldState>();
 
     return Form(
-
       key: _formkey,
       child: Scaffold(
         body: Padding(
@@ -53,7 +51,7 @@ class _PostScreenState extends State<PostScreen> {
                 height: 25,
               ),
               Text(
-                "Enter Details",
+                "Login",
                 style: TextStyle(
                     color: Colors.black26,
                     fontWeight: FontWeight.bold,
@@ -65,10 +63,12 @@ class _PostScreenState extends State<PostScreen> {
               TextFormField(
 
                 keyboardType: TextInputType.emailAddress,
-                validator: (input)=>!input!.contains("@")? "email Id Should Be Valid" : null,
-
+                validator: (input) => !input!.contains("@")
+                    ? "email Id Should Be Valid"
+                    : null,
                 controller: emailController,
                 decoration: InputDecoration(
+
                     prefixIcon: Icon(Icons.email),
                     hintText: "Email Address",
                     border: OutlineInputBorder(
@@ -78,6 +78,12 @@ class _PostScreenState extends State<PostScreen> {
                 height: 25,
               ),
               TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'please enter password';
+                  }
+                  return null;
+                },
                 keyboardType: TextInputType.text,
                 controller: passwordController,
                 obscureText: hidepassword,
@@ -103,7 +109,12 @@ class _PostScreenState extends State<PostScreen> {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    if (_formkey.currentState!.validate()) ;
+                    if (_formkey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    }
+                    ;
                     final String email = emailController.text;
                     final String password = passwordController.text;
 
@@ -131,9 +142,5 @@ class _PostScreenState extends State<PostScreen> {
       ),
     );
   }
-// @override
-// void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-//   super.debugFillProperties(properties);
-//   properties.add(DiagnosticsProperty<PostData>('_post', _post));
-// }
+
 }

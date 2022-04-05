@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../../extra/getdataa/post_method.dart';
 import '../getdata/user_list.dart';
 import '../postdata/PostScreen.dart';
-import 'data_screen.dart';
+import 'Drawer/shared_preference.dart';
+// import '../homescreen/home_screen.dart';
+// import 'data_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 applyMarginTop(),
                 Text(
-                  "Login ",
+                  "Home",
                   style: TextStyle(
                       color: Colors.black26,
                       fontWeight: FontWeight.bold,
@@ -47,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email),
                       hintText: "Enter email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30))),
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
                       hintText: "Password",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30))),
@@ -149,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PostScreen()));
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
               },
               title: Text(
                 "Post",
@@ -157,6 +160,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               leading: Icon(
                 Icons.account_balance_wallet_outlined,
+                size: 30,
+              ),
+            ),  ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Shared_preference()));
+              },
+              title: Text(
+                "Shared Preferences",
+                style: TextStyle(fontSize: 20),
+              ),
+              leading: Icon(
+                Icons.account_tree_outlined,
                 size: 30,
               ),
             ),
