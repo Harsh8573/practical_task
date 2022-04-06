@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/src/widgets/editable_text.dart';
+
 /// data : {"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","pantone_value":"15-4020"}
 /// support : {"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}
 
@@ -23,6 +25,8 @@ class UserData {
 
   Data? _data;
   Support? _support;
+
+  get name => null;
 
   UserData copyWith({
     Data? data,
@@ -113,7 +117,7 @@ class Data {
     _pantoneValue = pantoneValue;
   }
 
-  Data.fromJson(dynamic json) {
+   Data.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _year = json['year'];

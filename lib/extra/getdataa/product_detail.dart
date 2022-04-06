@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../main/strings.dart';
 import 'Product_Data.dart';
 
@@ -30,9 +31,17 @@ class _ProductDetailState extends State<ProductDetail> {
 
   _ProductDetailState(this.id, this.name, this.color);
 
+  TextEditingController _controller = TextEditingController();
+  late SharedPreferences prefs;
+
+  String nameis = " ";
   @override
   void initState() {
     super.initState();
+    initalize();
+  }
+  void initalize() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
   @override
@@ -44,25 +53,82 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       body: Center(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("id: $todo"),
             SizedBox(
               height: 7,
             ),
-            // Text("Name: $todoo"),
-            // SizedBox(
-            //   height: 7,
+            Text("Name: $todoo"),
+            SizedBox(
+              height: 7,
+            ),
+            Text("color: $todooo"),
+            // TextField(
+            //   controller: _controller,
+            //   decoration: InputDecoration(
+            //     fillColor: Colors.blue,
+            //     prefixIcon: Icon(Icons.archive_rounded),
+            //     hintText: 'Enter data',
+            //     border:
+            //     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            //   ),
             // ),
-            // Text("color: $todooo"),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 200,
+              child: TextField(
+                readOnly: true,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.account_tree),
+                    hintText: '${id}${id}${color}',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5))),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // save();
+                // Storeddata();
+              },
+              child: Text("Save"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // retrive();
+              },
+              child: Text("Retrive"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // delete();
+              },
+              child: Text("Delete"),
+            ),
           ],
         ),
       ),
     );
   }
+  save() async {
+    prefs.setString('text', _controller.text.toString());
+  }
+
+  retrive() async {
+    setState(() {
+      nameis = prefs.getString('text')!;
+    });
+  }
+
+  delete() async {
+    prefs.remove('text');
+    nameis = "";
+    setState(() {});
+  }
 }
-// Widget Text(){
-//   return Style
-// }
+

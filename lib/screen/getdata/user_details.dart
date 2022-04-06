@@ -41,17 +41,15 @@ class _UserDetailState extends State<UserDetail> {
             SizedBox(
               height: 7,
             ),
-            // Text("Name: $todoo"),
-            // SizedBox(
-            //   height: 7,
-            // ),
-            // Text("color: $todooo"),
+            Text("Name: $todoo"),
+            SizedBox(
+              height: 7,
+            ),
+            Text("color: $todooo"),
           ],
         ),
       ),
     );
   }
 }
-// Widget Text(){
-//   return Style
-// }
+

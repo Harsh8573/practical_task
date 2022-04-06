@@ -2,35 +2,45 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Model/user_data.dart';
 import '../../main/strings.dart';
 
-class UserProfile extends StatefulWidget {
+class UserPreference extends StatefulWidget {
   final int? id;
 
   final String? name;
   final String? color;
 
-  const UserProfile({Key? key, this.id, this.name, this.color})
+  const UserPreference({Key? key, this.id, this.name, this.color})
       : super(key: key);
 
   @override
-  State<UserProfile> createState() => _UserProfileState(id, name, color);
+  State<UserPreference> createState() => _UserPreferenceState(id, name, color);
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserPreferenceState extends State<UserPreference> {
   final int? id;
   late final futureAlbum;
   final String? color;
   final String? name;
 
-  _UserProfileState(this.id, this.name, this.color);
+  _UserPreferenceState(this.id, this.name, this.color);
+
+  TextEditingController _controller = TextEditingController();
+  late SharedPreferences prefs;
+  String nameis = " ";
 
   @override
   void initState() {
     super.initState();
     futureAlbum = usersAlbum();
+    initalize();
+  }
+
+  void initalize() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
   @override
@@ -60,6 +70,13 @@ class _UserProfileState extends State<UserProfile> {
                   SizedBox(
                     height: 35,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Container(
+                        height: 50,
+                        color: Colors.cyan,
+                        child: Center(child: Text('${id}      ${name}      ${color}'))),
+                  )
                 ],
               );
             } else if (snapshot.hasError) {
@@ -88,4 +105,5 @@ Widget applyMarginTop({double height = 20.0}) {
   return SizedBox(
     height: height,
   );
+
 }
