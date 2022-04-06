@@ -53,7 +53,7 @@ class _ProductListState extends State<ProductList> {
                       snapshot.data == null ? 0 : snapshot.data?.data?.length,
                   itemBuilder: (context, index) {
                     var color = "0xFF" +
-                        snapshot.data!.data![index].color!.substring(1, 7);
+                        snapshot.data!.data![index]!.color!.substring(1, 7);
                     var value = Color(int.parse(color));
                     return Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -63,18 +63,18 @@ class _ProductListState extends State<ProductList> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => ProductDetail(
-                                id:snapshot.data!.data![index].id,
-                                color:snapshot.data!.data![index].color,
-                                name: snapshot.data!.data![index].name!.toString(),),
+                                id:snapshot.data!.data![index]?.id,
+                                color:snapshot.data!.data![index]?.color,
+                                name: snapshot.data!.data![index]?.name!.toString(),),
                             ),
                           );
                         },
                         child: Card(
                             child: ListTile(
-                          leading: Text(snapshot.data!.data![index].id.toString()),
-                          title: Text(snapshot.data!.data![index].name!.toString()),
+                          leading: Text(snapshot.data!.data![index]!.id.toString()),
+                          title: Text(snapshot.data!.data![index]!.name!.toString()),
                           subtitle: Text(
-                            snapshot.data!.data![index].year!.toString(),
+                            snapshot.data!.data![index]!.year!.toString(),
                           ),
                           trailing: Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -84,7 +84,7 @@ class _ProductListState extends State<ProductList> {
                               color: value,
                               child: Center(
                                 child: Text(
-                                  '${snapshot.data!.data![index].color?.substring(1, 7)}',
+                                  '${snapshot.data!.data![index]!.color?.substring(1, 7)}',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13),

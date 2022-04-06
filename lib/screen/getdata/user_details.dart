@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class UserDetail extends StatefulWidget {
+class UserDetails extends StatefulWidget {
   final int? id;
   final String? name;
   final String? color;
 
-  const UserDetail({Key? key, this.id, this.name, this.color})
+  const UserDetails({Key? key, this.id, this.name, this.color})
       : super(key: key);
 
   @override
-  State<UserDetail> createState() => _UserDetailState(id, name, color);
+  State<UserDetails> createState() => _UserDetailsState(id, name, color);
 }
 
-class _UserDetailState extends State<UserDetail> {
+class _UserDetailsState extends State<UserDetails> {
   final int? id;
   final String? color;
   final String? name;
 
-  _UserDetailState(this.id, this.name, this.color);
+  _UserDetailsState(this.id, this.name, this.color);
 
   @override
   void initState() {

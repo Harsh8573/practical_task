@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../../extra/getdataa/post_method.dart';
 import '../postdata/PostData.dart';
 import 'PostData.dart';
 
@@ -24,7 +25,7 @@ Future<PostData> postAlbum(String email, String password) async {
   }
 }
 
-class _PostScreenState extends State<PostScreen>{
+class _PostScreenState extends State<PostScreen> {
   PostData? _post;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -37,7 +38,7 @@ class _PostScreenState extends State<PostScreen>{
   Widget build(BuildContext context) {
     // var width = MediaQuery.of(context).size.width;
     final GlobalKey<ScaffoldState> _scaffoldKey =
-    new GlobalKey<ScaffoldState>();
+        new GlobalKey<ScaffoldState>();
 
     return Form(
       key: _formkey,
@@ -61,14 +62,11 @@ class _PostScreenState extends State<PostScreen>{
                 height: 25,
               ),
               TextFormField(
-
                 keyboardType: TextInputType.emailAddress,
-                validator: (input) => !input!.contains("@")
-                    ? "email Id Should Be Valid"
-                    : null,
+                validator: (input) =>
+                    !input!.contains("@") ? "email Id Should Be Valid" : null,
                 controller: emailController,
                 decoration: InputDecoration(
-
                     prefixIcon: Icon(Icons.email),
                     hintText: "Email Address",
                     border: OutlineInputBorder(
@@ -135,12 +133,15 @@ class _PostScreenState extends State<PostScreen>{
                       fontSize: 15,
                       color: Colors.cyan[500]),
                 ),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PostMethod()));
+              }, child: Text('Send by post'))
             ],
           ),
         ),
       ),
     );
   }
-
 }

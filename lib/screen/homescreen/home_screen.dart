@@ -100,99 +100,99 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'Folder'),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                      image: AssetImage("flutter.png"), fit: BoxFit.cover)),
-              child: Center(
-                child: Container(
-                  child: Text(
-                    'Welcome',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => UserList()));
-              },
-              title: Text(
-                "Data",
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: Icon(
-                Icons.add_link,
-                size: 30,
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PostMethod()));
-              },
-              title: Text(
-                "PostMethod",
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: Icon(
-                Icons.account_circle_rounded,
-                size: 30,
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
-              },
-              title: Text(
-                "Post",
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: Icon(
-                Icons.account_balance_wallet_outlined,
-                size: 30,
-              ),
-            ),  ListTile(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Shared_preference()));
-              },
-              title: Text(
-                "Shared Preferences",
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: Icon(
-                Icons.account_tree_outlined,
-                size: 30,
-              ),
-            ),
-            // ListTile(
-            //   onTap: () {
-            //     Navigator.of(context).push(
-            //         MaterialPageRoute(builder: (context) => PostScreen()));
-            //   },
-            //   title: Text(
-            //     "Login",
-            //     style: TextStyle(fontSize: 20),
-            //   ),
-            //   leading: Icon(
-            //     Icons.login,
-            //     size: 30,
-            //   ),
-            // ),
-          ],
-        ),
-      ),
+      // drawer: Drawer(
+      //   child: ListView(
+      //     children: [
+      //       DrawerHeader(
+      //         decoration: BoxDecoration(
+      //             color: Colors.blue,
+      //             image: DecorationImage(
+      //                 image: AssetImage("flutter.png"), fit: BoxFit.cover)),
+      //         child: Center(
+      //           child: Container(
+      //             child: Text(
+      //               'Welcome',
+      //               style: TextStyle(
+      //                 color: Colors.white,
+      //                 fontSize: 30,
+      //                 fontWeight: FontWeight.bold,
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       ListTile(
+      //         onTap: () {
+      //           Navigator.of(context)
+      //               .push(MaterialPageRoute(builder: (context) => UserList()));
+      //         },
+      //         title: Text(
+      //           "Data",
+      //           style: TextStyle(fontSize: 20),
+      //         ),
+      //         leading: Icon(
+      //           Icons.add_link,
+      //           size: 30,
+      //         ),
+      //       ),
+      //       ListTile(
+      //         onTap: () {
+      //           Navigator.of(context).push(
+      //               MaterialPageRoute(builder: (context) => PostMethod()));
+      //         },
+      //         title: Text(
+      //           "PostMethod",
+      //           style: TextStyle(fontSize: 20),
+      //         ),
+      //         leading: Icon(
+      //           Icons.account_circle_rounded,
+      //           size: 30,
+      //         ),
+      //       ),
+      //       ListTile(
+      //         onTap: () {
+      //           Navigator.of(context).push(
+      //               MaterialPageRoute(builder: (context) => HomeScreen()));
+      //         },
+      //         title: Text(
+      //           "Post",
+      //           style: TextStyle(fontSize: 20),
+      //         ),
+      //         leading: Icon(
+      //           Icons.account_balance_wallet_outlined,
+      //           size: 30,
+      //         ),
+      //       ),  ListTile(
+      //         onTap: () {
+      //           Navigator.of(context).push(
+      //               MaterialPageRoute(builder: (context) => Shared_preference()));
+      //         },
+      //         title: Text(
+      //           "Shared Preferences",
+      //           style: TextStyle(fontSize: 20),
+      //         ),
+      //         leading: Icon(
+      //           Icons.account_tree_outlined,
+      //           size: 30,
+      //         ),
+      //       ),
+      //       // ListTile(
+      //       //   onTap: () {
+      //       //     Navigator.of(context).push(
+      //       //         MaterialPageRoute(builder: (context) => PostScreen()));
+      //       //   },
+      //       //   title: Text(
+      //       //     "Login",
+      //       //     style: TextStyle(fontSize: 20),
+      //       //   ),
+      //       //   leading: Icon(
+      //       //     Icons.login,
+      //       //     size: 30,
+      //       //   ),
+      //       // ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

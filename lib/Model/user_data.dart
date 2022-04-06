@@ -10,7 +10,7 @@ String userDataToJson(UserData data) => json.encode(data.toJson());
 
 class UserData {
   UserData({
-    Data? data,
+    UserDetail? data,
     Support? support,
   }) {
     _data = data;
@@ -18,18 +18,18 @@ class UserData {
   }
 
   UserData.fromJson(dynamic json) {
-    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    _data = json['data'] != null ? UserDetail.fromJson(json['data']) : null;
     _support =
         json['support'] != null ? Support.fromJson(json['support']) : null;
   }
 
-  Data? _data;
+  UserDetail? _data;
   Support? _support;
 
   get name => null;
 
   UserData copyWith({
-    Data? data,
+    UserDetail? data,
     Support? support,
   }) =>
       UserData(
@@ -37,7 +37,7 @@ class UserData {
         support: support ?? _support,
       );
 
-  Data? get data => _data;
+  UserDetail? get data => _data;
 
   Support? get support => _support;
 
@@ -53,8 +53,6 @@ class UserData {
   }
 }
 
-/// url : "https://reqres.in/#support-heading"
-/// text : "To keep ReqRes free, contributions towards server costs are appreciated!"
 
 Support supportFromJson(String str) => Support.fromJson(json.decode(str));
 
@@ -98,12 +96,12 @@ class Support {
   }
 }
 
-Data dataFromJson(String str) => Data.fromJson(json.decode(str));
+UserDetail dataFromJson(String str) => UserDetail.fromJson(json.decode(str));
 
-String dataToJson(Data data) => json.encode(data.toJson());
+String dataToJson(UserDetail data) => json.encode(data.toJson());
 
-class Data {
-  Data({
+class UserDetail {
+  UserDetail({
     int? id,
     String? name,
     int? year,
@@ -117,7 +115,7 @@ class Data {
     _pantoneValue = pantoneValue;
   }
 
-   Data.fromJson(dynamic json) {
+   UserDetail.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _year = json['year'];
@@ -131,14 +129,14 @@ class Data {
   String? _color;
   String? _pantoneValue;
 
-  Data copyWith({
+  UserDetail copyWith({
     int? id,
     String? name,
     int? year,
     String? color,
     String? pantoneValue,
   }) =>
-      Data(
+      UserDetail(
         id: id ?? _id,
         name: name ?? _name,
         year: year ?? _year,

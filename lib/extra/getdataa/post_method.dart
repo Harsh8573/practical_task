@@ -67,7 +67,7 @@ class PostMethodState extends State<PostMethod> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Data Example'),
+        title: Text('post send data'),
       ),
       body: Container(
         alignment: Alignment.center,

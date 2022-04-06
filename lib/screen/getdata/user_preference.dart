@@ -8,13 +8,14 @@ import '../../Model/user_data.dart';
 import '../../main/strings.dart';
 
 class UserPreference extends StatefulWidget {
-  final int? id;
+  UserDetail? data;
 
-  final String? name;
-  final String? color;
-
-  const UserPreference({Key? key, this.id, this.name, this.color})
+  UserPreference({Key? key, this.data, this.id, this.color, this.name})
       : super(key: key);
+
+  final int? id;
+  final String? color;
+  late final String? name;
 
   @override
   State<UserPreference> createState() => _UserPreferenceState(id, name, color);
@@ -24,7 +25,7 @@ class _UserPreferenceState extends State<UserPreference> {
   final int? id;
   late final futureAlbum;
   final String? color;
-  final String? name;
+  late final String? name;
 
   _UserPreferenceState(this.id, this.name, this.color);
 
@@ -50,44 +51,73 @@ class _UserPreferenceState extends State<UserPreference> {
         centerTitle: true,
         title: Text(Strings.fetch_data),
       ),
-      body: Center(
-        child: FutureBuilder<UserData>(
-          future: futureAlbum,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  applyMarginTop(),
-                  Text(
-                    "id: ${id}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+                height: 50,
+                // color: Colors.cyan,
+                child: Center(
+                  child: TextField(
+                    // controller: _controller,
+                    decoration: InputDecoration(
+                      fillColor: Colors.blue,
+                      prefixIcon: Icon(Icons.archive_rounded),
+                      hintText: nameis,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
                   ),
-                  applyMarginTop(),
-                  Text(name!),
-                  applyMarginTop(),
-                  Text(color!),
-                  SizedBox(
-                    height: 35,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Container(
-                        height: 50,
-                        color: Colors.cyan,
-                        child: Center(child: Text('${id}      ${name}      ${color}'))),
-                  )
-                ],
-              );
-            } else if (snapshot.hasError) {
-              return Text('110--${snapshot.error}');
-            }
+                ),
+              ),
+            ),
 
-            return const CircularProgressIndicator();
-          },
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                save();
+              },
+              child: Text("Save"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                retrive();
+              },
+              child: Text("Retrive"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                delete();
+              },
+              child: Text("Delete"),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  save() async {
+    prefs.setString('text', '${name}  ${id}');
+  }
+
+  retrive() async {
+    setState(() {
+      nameis = prefs.getString('text')!;
+    });
+  }
+
+  delete() async {
+    prefs.remove('text');
+    nameis = "";
+    setState(() {});
   }
 
   Future<UserData> usersAlbum() async {
@@ -105,5 +135,4 @@ Widget applyMarginTop({double height = 20.0}) {
   return SizedBox(
     height: height,
   );
-
 }

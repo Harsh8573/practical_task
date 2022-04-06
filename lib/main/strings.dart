@@ -77,7 +77,7 @@ class Strings {
   static const String screen3 = "Screen 3";
 
   //data fetch
-  static const String fetch_data = "Fetch Data";
+  static const String fetch_data = "Get Data";
   static const String failed_to_load = 'Failed to load album';
 
 
