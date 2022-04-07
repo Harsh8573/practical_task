@@ -23,17 +23,6 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: practice(),
-      // theme: theme.copyWith(
-      //   colorScheme: theme.colorScheme
-      //       .copyWith(primary: Colors.orangeAccent, secondary: Colors.green),
-      //   textTheme:TextTheme(
-      //      headline1:const TextStyle(
-      //          fontWeight:FontWeight.bold,
-      //          fontSize: 24,
-      //          color: Colors.green)
-      //   )
-      // ),
-      // ignore: prefer_const_constructors
     );
   }
 }

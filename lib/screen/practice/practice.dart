@@ -8,6 +8,7 @@ import 'package:practical_harsh/screen/practice/pageview.dart';
 import 'package:practical_harsh/screen/practice/tab_bar.dart';
 
 import '../../main/const.dart';
+import '../getdata/get_data.dart';
 import '../getdata/user_list.dart';
 import '../homescreen/Drawer/shared_preference.dart';
 import '../homescreen/home_screen.dart';
@@ -350,7 +351,7 @@ class _practiceState extends State<practice> {
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => UserList()),
+                      MaterialPageRoute(builder: (context) => GetData()),
                     );
                   },
                   title: Text(Strings.fetch_data),

@@ -86,7 +86,7 @@ class _UserListState extends State<UserList> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      UserPreference(
+                                      UserProfile(
                                         id: snapshot.data!.data![index]?.id,
                                         color: snapshot.data!.data![index]
                                             ?.color

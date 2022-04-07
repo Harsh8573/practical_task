@@ -36,7 +36,7 @@ class _UserPreferenceState extends State<UserPreference> {
   @override
   void initState() {
     super.initState();
-    futureAlbum = usersAlbum();
+    // futureAlbum = usersAlbum();
     initalize();
   }
 
@@ -64,22 +64,30 @@ class _UserPreferenceState extends State<UserPreference> {
                 // color: Colors.cyan,
                 child: Center(
                   child: TextField(
-                    // controller: _controller,
+                    controller: _controller,
                     decoration: InputDecoration(
-                      fillColor: Colors.blue,
-                      prefixIcon: Icon(Icons.archive_rounded),
-                      hintText: nameis,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
+                        prefixIcon: Icon(Icons.archive_rounded),
+
+                        border: OutlineInputBorder()),
                   ),
                 ),
               ),
             ),
-
             SizedBox(
               height: 20,
             ),
+            TextField(
+              // controller: _controller,
+              readOnly: true,
+              decoration: InputDecoration(
+                fillColor: Colors.blue,
+                prefixIcon: Icon(Icons.add),
+                hintText: nameis,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+
             ElevatedButton(
               onPressed: () {
                 save();
@@ -105,7 +113,7 @@ class _UserPreferenceState extends State<UserPreference> {
   }
 
   save() async {
-    prefs.setString('text', '${name}  ${id}');
+    prefs.setString('text', _controller.text.toString());
   }
 
   retrive() async {
@@ -120,15 +128,19 @@ class _UserPreferenceState extends State<UserPreference> {
     setState(() {});
   }
 
-  Future<UserData> usersAlbum() async {
-    final response =
-        await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
-    if (response.statusCode == 200) {
-      return UserData.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception(Strings.failed_to_load);
-    }
-  }
+  // Future<UserData> usersAlbum() async {
+  //   final response =
+  //       await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
+  //   print(response.toString());
+  //   if (response.statusCode == 200) {
+  //
+  //     final List<dynamic> datalist = jsonDecode(response.body);
+  //     return datalist.map => UserData.fromJson(data)).toList();
+  //
+  //   } else {
+  //     throw Exception(Strings.failed_to_load);
+  //   }
+  // }
 }
 
 Widget applyMarginTop({double height = 20.0}) {
