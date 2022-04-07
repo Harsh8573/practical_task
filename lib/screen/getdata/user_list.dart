@@ -16,6 +16,7 @@ Future<ProductData> getAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
     return ProductData.fromJson(jsonDecode(response.body));
+
   } else {
     throw Exception(Strings.failed_to_load);
   }

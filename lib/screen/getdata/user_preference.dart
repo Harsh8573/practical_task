@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Model/user_data.dart';
+import '../../extra/getdataa/Product_Data.dart';
 import '../../main/strings.dart';
 
 class UserPreference extends StatefulWidget {
@@ -67,7 +68,6 @@ class _UserPreferenceState extends State<UserPreference> {
                     controller: _controller,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.archive_rounded),
-
                         border: OutlineInputBorder()),
                   ),
                 ),
@@ -83,11 +83,10 @@ class _UserPreferenceState extends State<UserPreference> {
                 fillColor: Colors.blue,
                 prefixIcon: Icon(Icons.add),
                 hintText: nameis,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
-
             ElevatedButton(
               onPressed: () {
                 save();
@@ -128,19 +127,16 @@ class _UserPreferenceState extends State<UserPreference> {
     setState(() {});
   }
 
-  // Future<UserData> usersAlbum() async {
-  //   final response =
-  //       await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
-  //   print(response.toString());
-  //   if (response.statusCode == 200) {
-  //
-  //     final List<dynamic> datalist = jsonDecode(response.body);
-  //     return datalist.map => UserData.fromJson(data)).toList();
-  //
-  //   } else {
-  //     throw Exception(Strings.failed_to_load);
-  //   }
-  // }
+  Future<ProductData> usersAlbum() async {
+    final response =
+        await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
+    print(response.toString());
+    if (response.statusCode == 200) {
+      return ProductData.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception(Strings.failed_to_load);
+    }
+  }
 }
 
 Widget applyMarginTop({double height = 20.0}) {

@@ -16,6 +16,7 @@ import '../postdata/PostScreen.dart';
 import 'image_picker.dart';
 
 class practice extends StatefulWidget {
+
   @override
   State<practice> createState() => _practiceState();
 }
