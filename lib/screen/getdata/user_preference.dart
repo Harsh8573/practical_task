@@ -30,14 +30,13 @@ class _UserPreferenceState extends State<UserPreference> {
 
   _UserPreferenceState(this.id, this.name, this.color);
 
-  TextEditingController _controller = TextEditingController();
+  // TextEditingController _controller = TextEditingController();
   late SharedPreferences prefs;
-  String nameis = " ";
 
   @override
   void initState() {
     super.initState();
-    // futureAlbum = usersAlbum();
+    futureAlbum = usersAlbum();
     initalize();
   }
 
@@ -56,35 +55,14 @@ class _UserPreferenceState extends State<UserPreference> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-                height: 50,
-                // color: Colors.cyan,
-                child: Center(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.archive_rounded),
-                        border: OutlineInputBorder()),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
+          children: [Container(
+            child: Text('h'),
+
+          ),
             TextField(
-              // controller: _controller,
-              readOnly: true,
+
               decoration: InputDecoration(
-                fillColor: Colors.blue,
-                prefixIcon: Icon(Icons.add),
-                hintText: nameis,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                hintText: save(),
               ),
             ),
             ElevatedButton(
@@ -110,35 +88,34 @@ class _UserPreferenceState extends State<UserPreference> {
       ),
     );
   }
+  Future<UserData> usersAlbum() async {
+    final response =
+    await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
+    if (response.statusCode == 200) {
+      return UserData.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception(Strings.failed_to_load);
+    }
+  }
 
-  save() async {
-    prefs.setString('text', _controller.text.toString());
+  save() {
+    prefs.setString('text', 'haeesh');
   }
 
   retrive() async {
     setState(() {
-      nameis = prefs.getString('text')!;
+      name = prefs.getString('text')!;
     });
   }
 
   delete() async {
     prefs.remove('text');
-    nameis = "";
+    name = "";
     setState(() {});
   }
 
-  Future<ProductData> usersAlbum() async {
-    final response =
-        await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
-    print(response.toString());
-    if (response.statusCode == 200) {
-      return ProductData.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception(Strings.failed_to_load);
-    }
-  }
-}
 
+}
 Widget applyMarginTop({double height = 20.0}) {
   return SizedBox(
     height: height,

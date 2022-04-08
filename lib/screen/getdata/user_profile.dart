@@ -54,9 +54,9 @@ class _UserProfileState extends State<UserProfile> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   applyMarginTop(),
-                  Text(name!),
+                  Text('Name :  ${name!}'),
                   applyMarginTop(),
-                  Text(color!),
+                  Text("Color:  ${color!.substring(1,7)}"),
                   SizedBox(
                     height: 35,
                   ),
