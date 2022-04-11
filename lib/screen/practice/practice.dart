@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:practical_harsh/extra/getdataa/post_method.dart';
 import 'package:practical_harsh/main/strings.dart';
+import 'package:practical_harsh/screen/getdata/user_profile.dart';
 import 'package:practical_harsh/screen/practice/pageview.dart';
 import 'package:practical_harsh/screen/practice/tab_bar.dart';
-
 import '../../main/const.dart';
-import '../getdata/get_data.dart';
 import '../getdata/user_list.dart';
+import '../getdata/user_string.dart';
 import '../homescreen/Drawer/shared_preference.dart';
 import '../homescreen/home_screen.dart';
 import '../postdata/PostScreen.dart';
@@ -352,7 +351,7 @@ class _practiceState extends State<practice> {
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => GetData()),
+                      MaterialPageRoute(builder: (context) => UserString()),
                     );
                   },
                   title: Text(Strings.fetch_data),

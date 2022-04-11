@@ -7,7 +7,9 @@ import 'package:http/http.dart'as http;
 import '../../../Model/user_data.dart';
 import '../../../extra/getdataa/Product_Data.dart';
 import '../../../main/strings.dart';
-
+void main(){
+  runApp(Shared_preference());
+}
 class Shared_preference extends StatefulWidget {
   const Shared_preference({Key? key}) : super(key: key);
 
@@ -33,58 +35,70 @@ class _Shared_preferenceState extends State<Shared_preference> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                fillColor: Colors.blue,
-                prefixIcon: Icon(Icons.archive_rounded),
-                hintText: 'Enter data',
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 200,
-              child: TextField(
-                readOnly: true,
+    return MaterialApp(
+      home: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _controller,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.account_tree),
-                    hintText: name,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5))),
+                  fillColor: Colors.blue,
+                  prefixIcon: Icon(Icons.archive_rounded),
+                  hintText: 'Enter Data',
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                save();
-              },
-              child: Text("Save"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                retrive();
-              },
-              child: Text("Retrive"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                delete();
-              },
-              child: Text("Delete"),
-            ),
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 200,
+                child: TextField(
+
+
+                  readOnly: true,
+                  decoration: InputDecoration(
+
+                      prefixIcon: Icon(Icons.account_tree),
+                      hintText: name,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  save();
+                },
+                child: Text("Save"),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+
+              ElevatedButton(
+                onPressed: () {
+                  retrive();
+                },
+                child: Text("Saved Data"),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  delete();
+                },
+                child: Text("Delete"),
+              ),
+            ],
+          ),
         ),
       ),
     );

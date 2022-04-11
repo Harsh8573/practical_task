@@ -6,12 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:practical_harsh/main/strings.dart';
 import 'package:practical_harsh/screen/getdata/user_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Model/user_data.dart';
 import '../../extra/getdataa/Product_Data.dart';
-void main(){
-  runApp(UserList());
-}
 Future<ProductData> getAlbum() async {
   final response = await http.get(Uri.parse('https://reqres.in/api/unknown'));
   if (response.statusCode == 200) {
@@ -22,7 +17,10 @@ Future<ProductData> getAlbum() async {
   }
 }
 var obj=UserList();
-
+// print(UserList) {
+//   // TODO: implement print
+//   throw UnimplementedError();
+// }
 class UserList extends StatefulWidget {
   const UserList({Key? key}) : super(key: key);
 
@@ -55,8 +53,6 @@ class _UserListState extends State<UserList> {
 
   @override
   Widget build(BuildContext context) {
-    // String a = 'harsh';
-    // print(a);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

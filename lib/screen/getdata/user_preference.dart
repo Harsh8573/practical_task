@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Model/user_data.dart';
-import '../../extra/getdataa/Product_Data.dart';
 import '../../main/strings.dart';
 
 class UserPreference extends StatefulWidget {
@@ -90,7 +89,7 @@ class _UserPreferenceState extends State<UserPreference> {
   }
   Future<UserData> usersAlbum() async {
     final response =
-    await http.get(Uri.parse('https://reqres.in/api/unknown/${id}'));
+    await http.get(Uri.parse('https://reqres.in/api/unknown/$id'));
     if (response.statusCode == 200) {
       return UserData.fromJson(jsonDecode(response.body));
     } else {
