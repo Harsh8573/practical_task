@@ -13,6 +13,7 @@ import '../homescreen/Drawer/shared_preference.dart';
 import '../homescreen/home_screen.dart';
 import '../postdata/PostScreen.dart';
 import 'image_picker.dart';
+import 'login/login.dart';
 
 class practice extends StatefulWidget {
 
@@ -64,57 +65,7 @@ class _practiceState extends State<practice> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.end,
-                    //   children: [
-                    //     GestureDetector(
-                    //       onTap: () {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => HomeScreen()));
-                    //       },
-                    //       child: Container(
-                    //         child: Row(
-                    //           children: [
-                    //             Icon(Icons.home),
-                    //             SizedBox(
-                    //               width: 5,
-                    //             ),
-                    //             Text(
-                    //               'Home',
-                    //               style: TextStyle(fontWeight: FontWeight.bold),
-                    //             ),
-                    //             SizedBox(
-                    //               width: 15,
-                    //             ),
-                    //             GestureDetector(
-                    //               onTap: () {
-                    //                 Navigator.of(context).push(
-                    //                     MaterialPageRoute(
-                    //                         builder: (context) =>
-                    //                             PostScreen()));
-                    //               },
-                    //               child: Container(
-                    //                 child: Row(
-                    //                   children: [
-                    //                     Icon(Icons.account_box),
-                    //                     SizedBox(
-                    //                       width: 5,
-                    //                     ),
-                    //                     Text(
-                    //                       'Login',
-                    //                       style: TextStyle(
-                    //                           fontWeight: FontWeight.bold),
-                    //                     )
-                    //                   ],
-                    //                 ),
-                    //               ),
-                    //             )
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -368,7 +319,7 @@ class _practiceState extends State<practice> {
                 child: ListTile(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => tabbar()),
+                      MaterialPageRoute(builder: (context) => TabbBar()),
                     );
                   },
                   title: Text(Strings.tabbar),

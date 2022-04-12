@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:practical_harsh/main/strings.dart';
-
-
 
 class tabbar extends StatefulWidget {
   @override
@@ -10,7 +7,6 @@ class tabbar extends StatefulWidget {
 }
 
 class _tabbarState extends State<tabbar> {
-
   //Size get PreferredSize => Size.fromHeight(100);
   @override
   Widget build(BuildContext context) {
@@ -25,13 +21,11 @@ class _tabbarState extends State<tabbar> {
               child: Column(
                 children: <Widget>[
                   Expanded(child: Container()),
-                   TabBar(
-
+                  TabBar(
                     tabs: [
-                      Tab(child: tabTextStyle(text:Strings.screen1)),
-                      Tab(child: tabTextStyle(text:Strings.screen2)),
-                      Tab(child: tabTextStyle(text:Strings.screen3)),
-
+                      Tab(child: tabTextStyle(text: Strings.screen1)),
+                      Tab(child: tabTextStyle(text: Strings.screen2)),
+                      // Tab(child: tabTextStyle(text: Strings.screen3)),
                     ],
                   ),
                 ],
@@ -39,29 +33,34 @@ class _tabbarState extends State<tabbar> {
             ),
           ),
         ),
-        body:  TabBarView(
+        body: TabBarView(
           children: [
-            centerTextView(text:Strings.screen1),
-            centerTextView(text:Strings.screen2),
-            centerTextView(text:Strings.screen3),
-
-          ],),),);
+            centerTextView(text: Strings.screen1),
+            centerTextView(text: Strings.screen2),
+            centerTextView(text: Strings.screen3),
+          ],
+        ),
+      ),
+    );
   }
 }
-Widget centerTextView({String text = "", FontWeight fontWeight =FontWeight.bold}) {
+
+Widget centerTextView(
+    {String text = "", FontWeight fontWeight = FontWeight.bold}) {
   return Center(
-      child:Text(text,
-        style: TextStyle(
-            fontWeight: fontWeight,
-            fontSize: 28
-        ),)
-  );
+      child: Text(
+    text,
+    style: TextStyle(fontWeight: fontWeight, fontSize: 28),
+  ));
 }
-Widget tabTextStyle({String text= "", FontWeight fontWeight = FontWeight.bold, Color color=Colors.white, double fontSize= 16.0}) {
-  return Text(text,
-    style: TextStyle(
-        fontWeight: fontWeight,
-        color: color,
-        fontSize: fontSize
-    ),);
+
+Widget tabTextStyle(
+    {String text = "",
+    FontWeight fontWeight = FontWeight.bold,
+    Color color = Colors.white,
+    double fontSize = 16.0}) {
+  return Text(
+    text,
+    style: TextStyle(fontWeight: fontWeight, color: color, fontSize: fontSize),
+  );
 }
