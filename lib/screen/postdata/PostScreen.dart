@@ -13,9 +13,6 @@ class PostScreen extends StatefulWidget {
 Future<PostData> postAlbum(String email, String password) async {
   final String apilink = "https://reqres.in/api/login";
   final response = await http.post(Uri.parse(apilink),
-      // headers: <String, String>{
-      //   'Content-Type': 'application/json; charset=UTF-8',
-      // },
       body: {"email": email, "password": password});
   if (response.statusCode == 200) {
     final String res = response.body;
